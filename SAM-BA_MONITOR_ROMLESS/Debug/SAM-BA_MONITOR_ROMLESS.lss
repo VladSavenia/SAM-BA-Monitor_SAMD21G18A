@@ -1,0 +1,1941 @@
+
+SAM-BA_MONITOR_ROMLESS.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000a74  00000000  00000000  00010000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .relocate     00000000  20000000  20000000  00010a74  2**0
+                  CONTENTS
+  2 .bss          0000002c  20000000  20000000  00020000  2**2
+                  ALLOC
+  3 .stack        00000284  2000002c  2000002c  00020000  2**0
+                  ALLOC
+  4 .ARM.attributes 00000028  00000000  00000000  00010a74  2**0
+                  CONTENTS, READONLY
+  5 .comment      00000059  00000000  00000000  00010a9c  2**0
+                  CONTENTS, READONLY
+  6 .debug_info   0000dcd2  00000000  00000000  00010af5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000fb9  00000000  00000000  0001e7c7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_loc    000010fe  00000000  00000000  0001f780  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_aranges 00000168  00000000  00000000  0002087e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_ranges 00000130  00000000  00000000  000209e6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_macro  00011a16  00000000  00000000  00020b16  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_line   00002ac0  00000000  00000000  0003252c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_str    000725cb  00000000  00000000  00034fec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_frame  00000360  00000000  00000000  000a75b8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <exception_table>:
+   0:	b0 02 00 20 19 01 00 00 15 01 00 00 15 01 00 00     ... ............
+	...
+  2c:	15 01 00 00 00 00 00 00 00 00 00 00 15 01 00 00     ................
+  3c:	15 01 00 00 15 01 00 00 15 01 00 00 15 01 00 00     ................
+  4c:	15 01 00 00 15 01 00 00 15 01 00 00 15 01 00 00     ................
+  5c:	15 01 00 00 15 01 00 00 15 01 00 00 15 01 00 00     ................
+  6c:	15 01 00 00 15 01 00 00 15 01 00 00 15 01 00 00     ................
+  7c:	15 01 00 00 15 01 00 00 15 01 00 00 15 01 00 00     ................
+  8c:	15 01 00 00 15 01 00 00 00 00 00 00 00 00 00 00     ................
+  9c:	15 01 00 00 15 01 00 00 15 01 00 00 15 01 00 00     ................
+  ac:	15 01 00 00 00 00 00 00                             ........
+
+000000b4 <__do_global_dtors_aux>:
+  b4:	b510      	push	{r4, lr}
+  b6:	4c06      	ldr	r4, [pc, #24]	; (d0 <__do_global_dtors_aux+0x1c>)
+  b8:	7823      	ldrb	r3, [r4, #0]
+  ba:	2b00      	cmp	r3, #0
+  bc:	d107      	bne.n	ce <__do_global_dtors_aux+0x1a>
+  be:	4b05      	ldr	r3, [pc, #20]	; (d4 <__do_global_dtors_aux+0x20>)
+  c0:	2b00      	cmp	r3, #0
+  c2:	d002      	beq.n	ca <__do_global_dtors_aux+0x16>
+  c4:	4804      	ldr	r0, [pc, #16]	; (d8 <__do_global_dtors_aux+0x24>)
+  c6:	e000      	b.n	ca <__do_global_dtors_aux+0x16>
+  c8:	bf00      	nop
+  ca:	2301      	movs	r3, #1
+  cc:	7023      	strb	r3, [r4, #0]
+  ce:	bd10      	pop	{r4, pc}
+  d0:	20000000 	.word	0x20000000
+  d4:	00000000 	.word	0x00000000
+  d8:	00000a74 	.word	0x00000a74
+
+000000dc <frame_dummy>:
+  dc:	4b08      	ldr	r3, [pc, #32]	; (100 <frame_dummy+0x24>)
+  de:	b510      	push	{r4, lr}
+  e0:	2b00      	cmp	r3, #0
+  e2:	d003      	beq.n	ec <frame_dummy+0x10>
+  e4:	4907      	ldr	r1, [pc, #28]	; (104 <frame_dummy+0x28>)
+  e6:	4808      	ldr	r0, [pc, #32]	; (108 <frame_dummy+0x2c>)
+  e8:	e000      	b.n	ec <frame_dummy+0x10>
+  ea:	bf00      	nop
+  ec:	4807      	ldr	r0, [pc, #28]	; (10c <frame_dummy+0x30>)
+  ee:	6803      	ldr	r3, [r0, #0]
+  f0:	2b00      	cmp	r3, #0
+  f2:	d100      	bne.n	f6 <frame_dummy+0x1a>
+  f4:	bd10      	pop	{r4, pc}
+  f6:	4b06      	ldr	r3, [pc, #24]	; (110 <frame_dummy+0x34>)
+  f8:	2b00      	cmp	r3, #0
+  fa:	d0fb      	beq.n	f4 <frame_dummy+0x18>
+  fc:	4798      	blx	r3
+  fe:	e7f9      	b.n	f4 <frame_dummy+0x18>
+ 100:	00000000 	.word	0x00000000
+ 104:	20000004 	.word	0x20000004
+ 108:	00000a74 	.word	0x00000a74
+ 10c:	00000a74 	.word	0x00000a74
+ 110:	00000000 	.word	0x00000000
+
+00000114 <Dummy_Handler>:
+
+/**
+ * \brief Default interrupt handler for unused IRQs.
+ */
+void Dummy_Handler(void)
+{
+ 114:	e7fe      	b.n	114 <Dummy_Handler>
+	...
+
+00000118 <Reset_Handler>:
+{
+ 118:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+        if (pSrc != pDest) {
+ 11a:	4a23      	ldr	r2, [pc, #140]	; (1a8 <Reset_Handler+0x90>)
+ 11c:	4b23      	ldr	r3, [pc, #140]	; (1ac <Reset_Handler+0x94>)
+ 11e:	429a      	cmp	r2, r3
+ 120:	d009      	beq.n	136 <Reset_Handler+0x1e>
+ 122:	4b22      	ldr	r3, [pc, #136]	; (1ac <Reset_Handler+0x94>)
+ 124:	4a20      	ldr	r2, [pc, #128]	; (1a8 <Reset_Handler+0x90>)
+ 126:	e003      	b.n	130 <Reset_Handler+0x18>
+                        *pDest++ = *pSrc++;
+ 128:	6811      	ldr	r1, [r2, #0]
+ 12a:	6019      	str	r1, [r3, #0]
+ 12c:	3304      	adds	r3, #4
+ 12e:	3204      	adds	r2, #4
+                for (; pDest < &_erelocate;) {
+ 130:	491f      	ldr	r1, [pc, #124]	; (1b0 <Reset_Handler+0x98>)
+ 132:	428b      	cmp	r3, r1
+ 134:	d3f8      	bcc.n	128 <Reset_Handler+0x10>
+                        *pDest++ = *pSrc++;
+ 136:	4b1f      	ldr	r3, [pc, #124]	; (1b4 <Reset_Handler+0x9c>)
+ 138:	e002      	b.n	140 <Reset_Handler+0x28>
+                *pDest++ = 0;
+ 13a:	2200      	movs	r2, #0
+ 13c:	601a      	str	r2, [r3, #0]
+ 13e:	3304      	adds	r3, #4
+        for (pDest = &_szero; pDest < &_ezero;) {
+ 140:	4a1d      	ldr	r2, [pc, #116]	; (1b8 <Reset_Handler+0xa0>)
+ 142:	4293      	cmp	r3, r2
+ 144:	d3f9      	bcc.n	13a <Reset_Handler+0x22>
+        SCB->VTOR = ((uint32_t) pSrc & SCB_VTOR_TBLOFF_Msk);
+ 146:	4a1d      	ldr	r2, [pc, #116]	; (1bc <Reset_Handler+0xa4>)
+ 148:	21ff      	movs	r1, #255	; 0xff
+ 14a:	4b1d      	ldr	r3, [pc, #116]	; (1c0 <Reset_Handler+0xa8>)
+ 14c:	438b      	bics	r3, r1
+ 14e:	6093      	str	r3, [r2, #8]
+        SBMATRIX->SFR[SBMATRIX_SLAVE_HMCRAMC0].reg = 2;
+ 150:	39fd      	subs	r1, #253	; 0xfd
+ 152:	2390      	movs	r3, #144	; 0x90
+ 154:	005b      	lsls	r3, r3, #1
+ 156:	4a1b      	ldr	r2, [pc, #108]	; (1c4 <Reset_Handler+0xac>)
+ 158:	50d1      	str	r1, [r2, r3]
+        USB->DEVICE.QOSCTRL.bit.CQOS = 2;
+ 15a:	4a1b      	ldr	r2, [pc, #108]	; (1c8 <Reset_Handler+0xb0>)
+ 15c:	78d3      	ldrb	r3, [r2, #3]
+ 15e:	2503      	movs	r5, #3
+ 160:	43ab      	bics	r3, r5
+ 162:	2402      	movs	r4, #2
+ 164:	4323      	orrs	r3, r4
+ 166:	70d3      	strb	r3, [r2, #3]
+        USB->DEVICE.QOSCTRL.bit.DQOS = 2;
+ 168:	78d3      	ldrb	r3, [r2, #3]
+ 16a:	270c      	movs	r7, #12
+ 16c:	43bb      	bics	r3, r7
+ 16e:	2608      	movs	r6, #8
+ 170:	4333      	orrs	r3, r6
+ 172:	70d3      	strb	r3, [r2, #3]
+        DMAC->QOSCTRL.bit.DQOS = 2;
+ 174:	4b15      	ldr	r3, [pc, #84]	; (1cc <Reset_Handler+0xb4>)
+ 176:	7b98      	ldrb	r0, [r3, #14]
+ 178:	2230      	movs	r2, #48	; 0x30
+ 17a:	4390      	bics	r0, r2
+ 17c:	2220      	movs	r2, #32
+ 17e:	4310      	orrs	r0, r2
+ 180:	7398      	strb	r0, [r3, #14]
+        DMAC->QOSCTRL.bit.FQOS = 2;
+ 182:	7b99      	ldrb	r1, [r3, #14]
+ 184:	43b9      	bics	r1, r7
+ 186:	4331      	orrs	r1, r6
+ 188:	7399      	strb	r1, [r3, #14]
+        DMAC->QOSCTRL.bit.WRBQOS = 2;
+ 18a:	7b9a      	ldrb	r2, [r3, #14]
+ 18c:	43aa      	bics	r2, r5
+ 18e:	4322      	orrs	r2, r4
+ 190:	739a      	strb	r2, [r3, #14]
+        NVMCTRL->CTRLB.bit.MANW = 1;
+ 192:	4a0f      	ldr	r2, [pc, #60]	; (1d0 <Reset_Handler+0xb8>)
+ 194:	6851      	ldr	r1, [r2, #4]
+ 196:	2380      	movs	r3, #128	; 0x80
+ 198:	430b      	orrs	r3, r1
+ 19a:	6053      	str	r3, [r2, #4]
+        __libc_init_array();
+ 19c:	4b0d      	ldr	r3, [pc, #52]	; (1d4 <Reset_Handler+0xbc>)
+ 19e:	4798      	blx	r3
+        main();
+ 1a0:	4b0d      	ldr	r3, [pc, #52]	; (1d8 <Reset_Handler+0xc0>)
+ 1a2:	4798      	blx	r3
+ 1a4:	e7fe      	b.n	1a4 <Reset_Handler+0x8c>
+ 1a6:	46c0      	nop			; (mov r8, r8)
+ 1a8:	00000a74 	.word	0x00000a74
+ 1ac:	20000000 	.word	0x20000000
+ 1b0:	20000000 	.word	0x20000000
+ 1b4:	20000000 	.word	0x20000000
+ 1b8:	2000002c 	.word	0x2000002c
+ 1bc:	e000ed00 	.word	0xe000ed00
+ 1c0:	00000000 	.word	0x00000000
+ 1c4:	41007000 	.word	0x41007000
+ 1c8:	41005000 	.word	0x41005000
+ 1cc:	41004800 	.word	0x41004800
+ 1d0:	41004000 	.word	0x41004000
+ 1d4:	000009b5 	.word	0x000009b5
+ 1d8:	00000359 	.word	0x00000359
+
+000001dc <uart_basic_init>:
+
+	uart_basic_init(BOOT_USART_MODULE, USART_BAUD_REG_VAL_FOR_SAMBA, BOOT_USART_MUX_SETTINGS);
+}
+
+void uart_basic_init(Sercom *sercom, uint16_t baud_val, uint32_t pad_conf)
+{
+ 1dc:	b510      	push	{r4, lr}
+{
+	
+}
+static inline void wait_for_usart_enable_sync(Sercom* sercom)
+{
+	while(sercom->USART.SYNCBUSY.bit.ENABLE);
+ 1de:	69c3      	ldr	r3, [r0, #28]
+ 1e0:	079b      	lsls	r3, r3, #30
+ 1e2:	d4fc      	bmi.n	1de <uart_basic_init+0x2>
+	/* Wait for synchronization */
+	wait_for_usart_enable_sync(sercom);
+	/* Disable the SERCOM UART module */
+	sercom->USART.CTRLA.bit.ENABLE = 0;
+ 1e4:	6804      	ldr	r4, [r0, #0]
+ 1e6:	2302      	movs	r3, #2
+ 1e8:	439c      	bics	r4, r3
+ 1ea:	6004      	str	r4, [r0, #0]
+}
+
+static inline void wait_for_usart_swrst_sync(Sercom* sercom)
+{
+	while(sercom->USART.SYNCBUSY.bit.SWRST);
+ 1ec:	69c3      	ldr	r3, [r0, #28]
+ 1ee:	07db      	lsls	r3, r3, #31
+ 1f0:	d4fc      	bmi.n	1ec <uart_basic_init+0x10>
+	/* Wait for synchronization */
+	wait_for_usart_swrst_sync(sercom);
+	/* Perform a software reset */
+	sercom->USART.CTRLA.bit.SWRST = 1;
+ 1f2:	6804      	ldr	r4, [r0, #0]
+ 1f4:	2301      	movs	r3, #1
+ 1f6:	4323      	orrs	r3, r4
+ 1f8:	6003      	str	r3, [r0, #0]
+ 1fa:	69c3      	ldr	r3, [r0, #28]
+ 1fc:	07db      	lsls	r3, r3, #31
+ 1fe:	d4fc      	bmi.n	1fa <uart_basic_init+0x1e>
+}
+
+static inline void wait_for_usart_swrst_enable_sync(Sercom* sercom)
+{
+	while(sercom->USART.SYNCBUSY.bit.SWRST || sercom->USART.SYNCBUSY.bit.ENABLE);
+ 200:	69c3      	ldr	r3, [r0, #28]
+ 202:	07db      	lsls	r3, r3, #31
+ 204:	d4fc      	bmi.n	200 <uart_basic_init+0x24>
+ 206:	69c3      	ldr	r3, [r0, #28]
+ 208:	079b      	lsls	r3, r3, #30
+ 20a:	d4f9      	bmi.n	200 <uart_basic_init+0x24>
+	/* Wait for synchronization */
+	wait_for_usart_swrst_sync(sercom);
+	/* Wait for synchronization */
+	wait_for_usart_swrst_enable_sync(sercom);
+	/* Update the UART pad settings, mode and data order settings */
+	sercom->USART.CTRLA.reg = pad_conf | SERCOM_USART_CTRLA_MODE(1) | SERCOM_USART_CTRLA_DORD | SERCOM_USART_CTRLA_RUNSTDBY;
+ 20c:	4b08      	ldr	r3, [pc, #32]	; (230 <uart_basic_init+0x54>)
+ 20e:	431a      	orrs	r2, r3
+ 210:	6002      	str	r2, [r0, #0]
+}
+static inline void wait_for_usart_ctrlb_sync(Sercom* sercom)
+{
+	while(sercom->USART.SYNCBUSY.bit.CTRLB);
+ 212:	69c3      	ldr	r3, [r0, #28]
+ 214:	075b      	lsls	r3, r3, #29
+ 216:	d4fc      	bmi.n	212 <uart_basic_init+0x36>
+	/* Wait for synchronization */
+	wait_for_usart_ctrlb_sync(sercom);
+	/* Enable transmit and receive and set data size to 8 bits */
+	sercom->USART.CTRLB.reg = SERCOM_USART_CTRLB_RXEN | SERCOM_USART_CTRLB_TXEN | SERCOM_USART_CTRLB_CHSIZE(0);
+ 218:	23c0      	movs	r3, #192	; 0xc0
+ 21a:	029b      	lsls	r3, r3, #10
+ 21c:	6043      	str	r3, [r0, #4]
+	/* Load the baud value */
+	sercom->USART.BAUD.reg = baud_val;
+ 21e:	8181      	strh	r1, [r0, #12]
+	while(sercom->USART.SYNCBUSY.bit.ENABLE);
+ 220:	69c3      	ldr	r3, [r0, #28]
+ 222:	079b      	lsls	r3, r3, #30
+ 224:	d4fc      	bmi.n	220 <uart_basic_init+0x44>
+	/* Wait for synchronization */
+	wait_for_usart_enable_sync(sercom);
+	/* Enable SERCOM UART */
+	sercom->USART.CTRLA.bit.ENABLE = 1;
+ 226:	6802      	ldr	r2, [r0, #0]
+ 228:	2302      	movs	r3, #2
+ 22a:	4313      	orrs	r3, r2
+ 22c:	6003      	str	r3, [r0, #0]
+}
+ 22e:	bd10      	pop	{r4, pc}
+ 230:	40000084 	.word	0x40000084
+
+00000234 <usart_open>:
+{
+ 234:	b510      	push	{r4, lr}
+ 236:	b086      	sub	sp, #24
+	port->WRCONFIG.reg = ((pin_mask & 0xFFFF) << PORT_WRCONFIG_PINMASK_Pos) |
+ 238:	4a1a      	ldr	r2, [pc, #104]	; (2a4 <STACK_SIZE+0x24>)
+ 23a:	23a8      	movs	r3, #168	; 0xa8
+ 23c:	491a      	ldr	r1, [pc, #104]	; (2a8 <STACK_SIZE+0x28>)
+ 23e:	50d1      	str	r1, [r2, r3]
+	port->WRCONFIG.reg = ((pin_mask >> 16) << PORT_WRCONFIG_PINMASK_Pos) |
+ 240:	481a      	ldr	r0, [pc, #104]	; (2ac <STACK_SIZE+0x2c>)
+ 242:	50d0      	str	r0, [r2, r3]
+	port->WRCONFIG.reg = ((pin_mask & 0xFFFF) << PORT_WRCONFIG_PINMASK_Pos) |
+ 244:	50d1      	str	r1, [r2, r3]
+	port->WRCONFIG.reg = ((pin_mask >> 16) << PORT_WRCONFIG_PINMASK_Pos) |
+ 246:	491a      	ldr	r1, [pc, #104]	; (2b0 <STACK_SIZE+0x30>)
+ 248:	50d1      	str	r1, [r2, r3]
+	Sercom *sercom_instances[SERCOM_INST_NUM] = SERCOM_INSTS;
+ 24a:	481a      	ldr	r0, [pc, #104]	; (2b4 <STACK_SIZE+0x34>)
+ 24c:	466b      	mov	r3, sp
+ 24e:	0002      	movs	r2, r0
+ 250:	ca13      	ldmia	r2!, {r0, r1, r4}
+ 252:	c313      	stmia	r3!, {r0, r1, r4}
+ 254:	ca13      	ldmia	r2!, {r0, r1, r4}
+ 256:	c313      	stmia	r3!, {r0, r1, r4}
+	for (uint32_t i = 0; i < SERCOM_INST_NUM; i++) {
+ 258:	2300      	movs	r3, #0
+ 25a:	2b05      	cmp	r3, #5
+ 25c:	d809      	bhi.n	272 <usart_open+0x3e>
+		if (BOOT_USART_MODULE == sercom_instances[i]) {
+ 25e:	009a      	lsls	r2, r3, #2
+ 260:	4669      	mov	r1, sp
+ 262:	5851      	ldr	r1, [r2, r1]
+ 264:	4a14      	ldr	r2, [pc, #80]	; (2b8 <STACK_SIZE+0x38>)
+ 266:	4291      	cmp	r1, r2
+ 268:	d001      	beq.n	26e <usart_open+0x3a>
+	for (uint32_t i = 0; i < SERCOM_INST_NUM; i++) {
+ 26a:	3301      	adds	r3, #1
+ 26c:	e7f5      	b.n	25a <usart_open+0x26>
+			inst = i;
+ 26e:	b2db      	uxtb	r3, r3
+ 270:	e000      	b.n	274 <usart_open+0x40>
+	uint8_t inst = 0;
+ 272:	2300      	movs	r3, #0
+	PM->APBCMASK.reg |= (1u << (inst + PM_APBCMASK_SERCOM0_Pos));
+ 274:	4811      	ldr	r0, [pc, #68]	; (2bc <STACK_SIZE+0x3c>)
+ 276:	6a02      	ldr	r2, [r0, #32]
+ 278:	1c9c      	adds	r4, r3, #2
+ 27a:	2101      	movs	r1, #1
+ 27c:	40a1      	lsls	r1, r4
+ 27e:	430a      	orrs	r2, r1
+ 280:	6202      	str	r2, [r0, #32]
+	GCLK->CLKCTRL.reg = GCLK_CLKCTRL_ID(inst+GCLK_CLKCTRL_ID_SERCOM0_CORE_Val) | (GCLK_CLKCTRL_GEN(GCLK_CLKCTRL_GEN_GCLK0_Val)) | GCLK_CLKCTRL_CLKEN;
+ 282:	3314      	adds	r3, #20
+ 284:	223f      	movs	r2, #63	; 0x3f
+ 286:	401a      	ands	r2, r3
+ 288:	2380      	movs	r3, #128	; 0x80
+ 28a:	01db      	lsls	r3, r3, #7
+ 28c:	4313      	orrs	r3, r2
+ 28e:	4a0c      	ldr	r2, [pc, #48]	; (2c0 <STACK_SIZE+0x40>)
+ 290:	8053      	strh	r3, [r2, #2]
+	uart_basic_init(BOOT_USART_MODULE, USART_BAUD_REG_VAL_FOR_SAMBA, BOOT_USART_MUX_SETTINGS);
+ 292:	22c4      	movs	r2, #196	; 0xc4
+ 294:	0392      	lsls	r2, r2, #14
+ 296:	490b      	ldr	r1, [pc, #44]	; (2c4 <STACK_SIZE+0x44>)
+ 298:	4807      	ldr	r0, [pc, #28]	; (2b8 <STACK_SIZE+0x38>)
+ 29a:	4b0b      	ldr	r3, [pc, #44]	; (2c8 <STACK_SIZE+0x48>)
+ 29c:	4798      	blx	r3
+}
+ 29e:	b006      	add	sp, #24
+ 2a0:	bd10      	pop	{r4, pc}
+ 2a2:	46c0      	nop			; (mov r8, r8)
+ 2a4:	41004400 	.word	0x41004400
+ 2a8:	53030000 	.word	0x53030000
+ 2ac:	d3030040 	.word	0xd3030040
+ 2b0:	d3030080 	.word	0xd3030080
+ 2b4:	000009fc 	.word	0x000009fc
+ 2b8:	42001c00 	.word	0x42001c00
+ 2bc:	40000400 	.word	0x40000400
+ 2c0:	40000c00 	.word	0x40000c00
+ 2c4:	0000c504 	.word	0x0000c504
+ 2c8:	000001dd 	.word	0x000001dd
+
+000002cc <uart_write_byte>:
+}
+static inline void wait_for_uart_syncbusy_clear(Sercom* sercom)
+{
+	while(sercom->USART.SYNCBUSY.reg);
+ 2cc:	69c3      	ldr	r3, [r0, #28]
+ 2ce:	2b00      	cmp	r3, #0
+ 2d0:	d1fc      	bne.n	2cc <uart_write_byte>
+void uart_write_byte(Sercom *sercom, uint8_t data)
+{
+	wait_for_uart_syncbusy_clear(sercom);
+	
+	/* Write the data to DATA register */
+	sercom->USART.DATA.reg = (uint16_t)data;
+ 2d2:	b289      	uxth	r1, r1
+ 2d4:	8501      	strh	r1, [r0, #40]	; 0x28
+
+	while (!(sercom->USART.INTFLAG.reg & SERCOM_USART_INTFLAG_TXC));
+ 2d6:	7e03      	ldrb	r3, [r0, #24]
+ 2d8:	079b      	lsls	r3, r3, #30
+ 2da:	d5fc      	bpl.n	2d6 <uart_write_byte+0xa>
+}
+ 2dc:	4770      	bx	lr
+
+000002de <uart_read_byte>:
+ 2de:	69c3      	ldr	r3, [r0, #28]
+ 2e0:	2b00      	cmp	r3, #0
+ 2e2:	d1fc      	bne.n	2de <uart_read_byte>
+}
+static inline void uart_read_clear_errors(Sercom* sercom)
+{
+	/* Check for errors */
+	if((uint8_t)(sercom->USART.STATUS.reg & SERCOM_USART_STATUS_MASK))
+ 2e4:	8b43      	ldrh	r3, [r0, #26]
+ 2e6:	069b      	lsls	r3, r3, #26
+ 2e8:	d003      	beq.n	2f2 <uart_read_byte+0x14>
+	{
+		sercom->USART.STATUS.reg &= 0xFFF8;
+ 2ea:	8b43      	ldrh	r3, [r0, #26]
+ 2ec:	2207      	movs	r2, #7
+ 2ee:	4393      	bics	r3, r2
+ 2f0:	8343      	strh	r3, [r0, #26]
+{
+	wait_for_uart_syncbusy_clear(sercom);
+	uart_read_clear_errors(sercom);
+	
+	/* Return the read data */
+	return((uint8_t)sercom->USART.DATA.reg);
+ 2f2:	8d00      	ldrh	r0, [r0, #40]	; 0x28
+ 2f4:	b2c0      	uxtb	r0, r0
+}
+ 2f6:	4770      	bx	lr
+
+000002f8 <usart_is_rx_ready>:
+		*ptr++ = (uint8_t)sercom->USART.DATA.reg;
+	} while (length--);
+}
+
+bool usart_is_rx_ready(void) {
+	return (BOOT_USART_MODULE->USART.INTFLAG.reg & SERCOM_USART_INTFLAG_RXC);
+ 2f8:	4b02      	ldr	r3, [pc, #8]	; (304 <usart_is_rx_ready+0xc>)
+ 2fa:	7e1b      	ldrb	r3, [r3, #24]
+ 2fc:	089b      	lsrs	r3, r3, #2
+ 2fe:	2001      	movs	r0, #1
+ 300:	4018      	ands	r0, r3
+}
+ 302:	4770      	bx	lr
+ 304:	42001c00 	.word	0x42001c00
+
+00000308 <check_start_application>:
+/**
+ * \brief Check the application startup condition
+ *
+ */
+static void check_start_application(void)
+{
+ 308:	b510      	push	{r4, lr}
+ 30a:	b082      	sub	sp, #8
+	uint32_t app_start_address;
+
+	/* Load the Reset Handler address of the application */
+	app_start_address = *(uint32_t *)(APP_START_ADDRESS + 4);
+ 30c:	4b0f      	ldr	r3, [pc, #60]	; (34c <check_start_application+0x44>)
+ 30e:	6818      	ldr	r0, [r3, #0]
+	/**
+	 * Test reset vector of application @APP_START_ADDRESS+4
+	 * Stay in SAM-BA if *(APP_START+0x4) == 0xFFFFFFFF
+	 * Application erased condition
+	 */
+	if (app_start_address == 0xFFFFFFFF) {
+ 310:	1c43      	adds	r3, r0, #1
+ 312:	d018      	beq.n	346 <check_start_application+0x3e>
+	boot_port->DIRCLR.reg = BOOT_PIN_MASK;
+ 314:	4b0e      	ldr	r3, [pc, #56]	; (350 <check_start_application+0x48>)
+ 316:	2280      	movs	r2, #128	; 0x80
+ 318:	0212      	lsls	r2, r2, #8
+ 31a:	605a      	str	r2, [r3, #4]
+	boot_port->PINCFG[BOOT_LOAD_PIN & 0x1F].reg = PORT_PINCFG_INEN | PORT_PINCFG_PULLEN;
+ 31c:	2406      	movs	r4, #6
+ 31e:	214f      	movs	r1, #79	; 0x4f
+ 320:	545c      	strb	r4, [r3, r1]
+	boot_port->OUTSET.reg = BOOT_PIN_MASK;
+ 322:	619a      	str	r2, [r3, #24]
+	boot_en = (boot_port->IN.reg) & BOOT_PIN_MASK;
+ 324:	6a19      	ldr	r1, [r3, #32]
+ 326:	4011      	ands	r1, r2
+ 328:	9101      	str	r1, [sp, #4]
+	boot_en = (boot_port->IN.reg) & BOOT_PIN_MASK;
+ 32a:	6a1b      	ldr	r3, [r3, #32]
+ 32c:	401a      	ands	r2, r3
+ 32e:	9201      	str	r2, [sp, #4]
+	return(boot_en == 0);
+ 330:	9b01      	ldr	r3, [sp, #4]
+		/* Stay in Bootloader */
+		return;
+	}
+
+	if(b_is_bootloader_condition_enabled())
+ 332:	2b00      	cmp	r3, #0
+ 334:	d007      	beq.n	346 <check_start_application+0x3e>
+		return;
+	}
+	else
+	{
+		/* Re-base the Stack Pointer */
+		__set_MSP(*(uint32_t *) APP_START_ADDRESS);
+ 336:	2380      	movs	r3, #128	; 0x80
+ 338:	019b      	lsls	r3, r3, #6
+ 33a:	681a      	ldr	r2, [r3, #0]
+  \details Assigns the given value to the Main Stack Pointer (MSP).
+  \param [in]    topOfMainStack  Main Stack Pointer value to set
+ */
+__STATIC_FORCEINLINE void __set_MSP(uint32_t topOfMainStack)
+{
+  __ASM volatile ("MSR msp, %0" : : "r" (topOfMainStack) : );
+ 33c:	f382 8808 	msr	MSP, r2
+
+		/* Re-base the vector table base address */
+		SCB->VTOR = ((uint32_t) APP_START_ADDRESS & SCB_VTOR_TBLOFF_Msk);
+ 340:	4a04      	ldr	r2, [pc, #16]	; (354 <check_start_application+0x4c>)
+ 342:	6093      	str	r3, [r2, #8]
+
+		/* Jump to application Reset Handler in the application */
+		asm("bx %0"::"r"(app_start_address));
+ 344:	4700      	bx	r0
+	}
+}
+ 346:	b002      	add	sp, #8
+ 348:	bd10      	pop	{r4, pc}
+ 34a:	46c0      	nop			; (mov r8, r8)
+ 34c:	00002004 	.word	0x00002004
+ 350:	41004400 	.word	0x41004400
+ 354:	e000ed00 	.word	0xe000ed00
+
+00000358 <main>:
+{
+ 358:	b510      	push	{r4, lr}
+	check_start_application();
+ 35a:	4b0b      	ldr	r3, [pc, #44]	; (388 <main+0x30>)
+ 35c:	4798      	blx	r3
+	NVMCTRL->CTRLB.bit.RWS = FLASH_WAIT_STATES;
+ 35e:	490b      	ldr	r1, [pc, #44]	; (38c <main+0x34>)
+ 360:	684a      	ldr	r2, [r1, #4]
+ 362:	231e      	movs	r3, #30
+ 364:	439a      	bics	r2, r3
+ 366:	3b1c      	subs	r3, #28
+ 368:	4313      	orrs	r3, r2
+ 36a:	604b      	str	r3, [r1, #4]
+	SYSCTRL->OSC8M.bit.PRESC = 0;
+ 36c:	4a08      	ldr	r2, [pc, #32]	; (390 <main+0x38>)
+ 36e:	6a11      	ldr	r1, [r2, #32]
+ 370:	4b08      	ldr	r3, [pc, #32]	; (394 <main+0x3c>)
+ 372:	400b      	ands	r3, r1
+ 374:	6213      	str	r3, [r2, #32]
+  \details Ensures the apparent order of the explicit memory operations before
+           and after the instruction, without ensuring their completion.
+ */
+__STATIC_FORCEINLINE void __DMB(void)
+{
+  __ASM volatile ("dmb 0xF":::"memory");
+ 376:	f3bf 8f5f 	dmb	sy
+  __ASM volatile ("cpsie i" : : : "memory");
+ 37a:	b662      	cpsie	i
+	init_sam_ba_monitor_interface();
+ 37c:	4b06      	ldr	r3, [pc, #24]	; (398 <main+0x40>)
+ 37e:	4798      	blx	r3
+		process_sam_ba_monitor();
+ 380:	4b06      	ldr	r3, [pc, #24]	; (39c <main+0x44>)
+ 382:	4798      	blx	r3
+ 384:	e7fc      	b.n	380 <main+0x28>
+ 386:	46c0      	nop			; (mov r8, r8)
+ 388:	00000309 	.word	0x00000309
+ 38c:	41004000 	.word	0x41004000
+ 390:	40000800 	.word	0x40000800
+ 394:	fffffcff 	.word	0xfffffcff
+ 398:	000003b9 	.word	0x000003b9
+ 39c:	00000675 	.word	0x00000675
+
+000003a0 <print_new_line>:
+volatile bool b_terminal_mode = false;
+volatile uint32_t sp;
+
+
+static void print_new_line(void)
+{
+ 3a0:	b510      	push	{r4, lr}
+	ptr_monitor_if->putdata("\n\r", 2);
+ 3a2:	4b03      	ldr	r3, [pc, #12]	; (3b0 <print_new_line+0x10>)
+ 3a4:	681b      	ldr	r3, [r3, #0]
+ 3a6:	68db      	ldr	r3, [r3, #12]
+ 3a8:	2102      	movs	r1, #2
+ 3aa:	4802      	ldr	r0, [pc, #8]	; (3b4 <print_new_line+0x14>)
+ 3ac:	4798      	blx	r3
+}
+ 3ae:	bd10      	pop	{r4, pc}
+ 3b0:	20000020 	.word	0x20000020
+ 3b4:	00000a4c 	.word	0x00000a4c
+
+000003b8 <init_sam_ba_monitor_interface>:
+
+void init_sam_ba_monitor_interface(void)
+{
+ 3b8:	b510      	push	{r4, lr}
+	#if SAM_BA_UART_INTERFACE_ENABLED
+		usart_open();
+ 3ba:	4b01      	ldr	r3, [pc, #4]	; (3c0 <init_sam_ba_monitor_interface+0x8>)
+ 3bc:	4798      	blx	r3
+	
+	#if SAM_BA_USB_INTERFACE_ENABLED
+		clock_configuration_for_usb();
+		usb_init();
+	#endif	
+}
+ 3be:	bd10      	pop	{r4, pc}
+ 3c0:	00000235 	.word	0x00000235
+
+000003c4 <sam_ba_putdata_term>:
+ *
+ * \param *data  Data pointer
+ * \param length Length of the data
+ */
+void sam_ba_putdata_term(uint8_t* data, uint32_t length)
+{
+ 3c4:	b570      	push	{r4, r5, r6, lr}
+ 3c6:	b084      	sub	sp, #16
+	uint8_t temp, buf[12], *data_ascii;
+	uint32_t i, int_value;
+
+	if (b_terminal_mode)
+ 3c8:	4b1e      	ldr	r3, [pc, #120]	; (444 <sam_ba_putdata_term+0x80>)
+ 3ca:	781b      	ldrb	r3, [r3, #0]
+ 3cc:	2b00      	cmp	r3, #0
+ 3ce:	d033      	beq.n	438 <sam_ba_putdata_term+0x74>
+	{
+		if (length == 4)
+ 3d0:	2904      	cmp	r1, #4
+ 3d2:	d00a      	beq.n	3ea <sam_ba_putdata_term+0x26>
+			int_value = *(uint32_t *) data;
+		else if (length == 2)
+ 3d4:	2902      	cmp	r1, #2
+ 3d6:	d00a      	beq.n	3ee <sam_ba_putdata_term+0x2a>
+			int_value = *(uint16_t *) data;
+		else
+			int_value = *(uint8_t *) data;
+ 3d8:	7804      	ldrb	r4, [r0, #0]
+
+		data_ascii = buf + 2;
+		data_ascii += length * 2 - 1;
+ 3da:	004d      	lsls	r5, r1, #1
+ 3dc:	1e6a      	subs	r2, r5, #1
+ 3de:	2306      	movs	r3, #6
+ 3e0:	446b      	add	r3, sp
+ 3e2:	469c      	mov	ip, r3
+ 3e4:	4462      	add	r2, ip
+
+		for (i = 0; i < length * 2; i++)
+ 3e6:	2000      	movs	r0, #0
+ 3e8:	e008      	b.n	3fc <sam_ba_putdata_term+0x38>
+			int_value = *(uint32_t *) data;
+ 3ea:	6804      	ldr	r4, [r0, #0]
+ 3ec:	e7f5      	b.n	3da <sam_ba_putdata_term+0x16>
+			int_value = *(uint16_t *) data;
+ 3ee:	8804      	ldrh	r4, [r0, #0]
+ 3f0:	e7f3      	b.n	3da <sam_ba_putdata_term+0x16>
+			temp = (uint8_t) (int_value & 0xf);
+
+			if (temp <= 0x9)
+				*data_ascii = temp | 0x30;
+			else
+				*data_ascii = temp + 0x37;
+ 3f2:	3337      	adds	r3, #55	; 0x37
+ 3f4:	7013      	strb	r3, [r2, #0]
+
+			int_value >>= 4;
+ 3f6:	0924      	lsrs	r4, r4, #4
+			data_ascii--;
+ 3f8:	3a01      	subs	r2, #1
+		for (i = 0; i < length * 2; i++)
+ 3fa:	3001      	adds	r0, #1
+ 3fc:	42a8      	cmp	r0, r5
+ 3fe:	d207      	bcs.n	410 <sam_ba_putdata_term+0x4c>
+			temp = (uint8_t) (int_value & 0xf);
+ 400:	230f      	movs	r3, #15
+ 402:	4023      	ands	r3, r4
+			if (temp <= 0x9)
+ 404:	2b09      	cmp	r3, #9
+ 406:	d8f4      	bhi.n	3f2 <sam_ba_putdata_term+0x2e>
+				*data_ascii = temp | 0x30;
+ 408:	2630      	movs	r6, #48	; 0x30
+ 40a:	4333      	orrs	r3, r6
+ 40c:	7013      	strb	r3, [r2, #0]
+ 40e:	e7f2      	b.n	3f6 <sam_ba_putdata_term+0x32>
+		}
+		buf[0] = '0';
+ 410:	a801      	add	r0, sp, #4
+ 412:	2330      	movs	r3, #48	; 0x30
+ 414:	7003      	strb	r3, [r0, #0]
+		buf[1] = 'x';
+ 416:	3348      	adds	r3, #72	; 0x48
+ 418:	7043      	strb	r3, [r0, #1]
+		buf[length * 2 + 2] = '\n';
+ 41a:	1c4b      	adds	r3, r1, #1
+ 41c:	005b      	lsls	r3, r3, #1
+ 41e:	220a      	movs	r2, #10
+ 420:	54c2      	strb	r2, [r0, r3]
+		buf[length * 2 + 3] = '\r';
+ 422:	3503      	adds	r5, #3
+ 424:	230d      	movs	r3, #13
+ 426:	5543      	strb	r3, [r0, r5]
+		ptr_monitor_if->putdata(buf, length * 2 + 4);
+ 428:	4b07      	ldr	r3, [pc, #28]	; (448 <sam_ba_putdata_term+0x84>)
+ 42a:	681b      	ldr	r3, [r3, #0]
+ 42c:	68db      	ldr	r3, [r3, #12]
+ 42e:	3102      	adds	r1, #2
+ 430:	0049      	lsls	r1, r1, #1
+ 432:	4798      	blx	r3
+	}
+	else
+		ptr_monitor_if->putdata(data, length);
+	return;
+}
+ 434:	b004      	add	sp, #16
+ 436:	bd70      	pop	{r4, r5, r6, pc}
+		ptr_monitor_if->putdata(data, length);
+ 438:	4b03      	ldr	r3, [pc, #12]	; (448 <sam_ba_putdata_term+0x84>)
+ 43a:	681b      	ldr	r3, [r3, #0]
+ 43c:	68db      	ldr	r3, [r3, #12]
+ 43e:	4798      	blx	r3
+	return;
+ 440:	e7f8      	b.n	434 <sam_ba_putdata_term+0x70>
+ 442:	46c0      	nop			; (mov r8, r8)
+ 444:	2000001c 	.word	0x2000001c
+ 448:	20000020 	.word	0x20000020
+
+0000044c <call_applet>:
+  __ASM volatile ("cpsid i" : : : "memory");
+ 44c:	b672      	cpsid	i
+  __ASM volatile ("dmb 0xF":::"memory");
+ 44e:	f3bf 8f5f 	dmb	sy
+  __ASM volatile ("MRS %0, msp" : "=r" (result) );
+ 452:	f3ef 8308 	mrs	r3, MSP
+{
+	uint32_t app_start_address;
+
+	cpu_irq_disable();
+
+	sp = __get_MSP();
+ 456:	4a06      	ldr	r2, [pc, #24]	; (470 <call_applet+0x24>)
+ 458:	6013      	str	r3, [r2, #0]
+
+	/* Rebase the Stack Pointer */
+	__set_MSP(*(uint32_t *) address);
+ 45a:	6803      	ldr	r3, [r0, #0]
+  __ASM volatile ("MSR msp, %0" : : "r" (topOfMainStack) : );
+ 45c:	f383 8808 	msr	MSP, r3
+
+	/* Rebase the vector table base address */
+	SCB->VTOR = ((uint32_t) address & SCB_VTOR_TBLOFF_Msk);
+ 460:	23ff      	movs	r3, #255	; 0xff
+ 462:	0002      	movs	r2, r0
+ 464:	439a      	bics	r2, r3
+ 466:	4b03      	ldr	r3, [pc, #12]	; (474 <call_applet+0x28>)
+ 468:	609a      	str	r2, [r3, #8]
+
+	/* Load the Reset Handler address of the application */
+	app_start_address = *(uint32_t *)(address + 4);
+ 46a:	6843      	ldr	r3, [r0, #4]
+
+	/* Jump to application Reset Handler in the application */
+	asm("bx %0"::"r"(app_start_address));
+ 46c:	4718      	bx	r3
+}
+ 46e:	4770      	bx	lr
+ 470:	20000024 	.word	0x20000024
+ 474:	e000ed00 	.word	0xe000ed00
+
+00000478 <sam_ba_monitor_run>:
+
+/**
+ * \brief This function starts the SAM-BA monitor.
+ */
+void sam_ba_monitor_run(void)
+{
+ 478:	b5f0      	push	{r4, r5, r6, r7, lr}
+ 47a:	46c6      	mov	lr, r8
+ 47c:	b500      	push	{lr}
+ 47e:	b092      	sub	sp, #72	; 0x48
+	uint32_t length;
+	uint32_t j, u8tmp, current_number, command;
+	uint8_t *ptr_data, *ptr, data[SIZEBUFMAX];
+
+	ptr_data = 0;
+ 480:	2600      	movs	r6, #0
+	command = 'z';
+ 482:	237a      	movs	r3, #122	; 0x7a
+ 484:	4698      	mov	r8, r3
+	j=0;
+	
+	// Start waiting some cmd
+	while (1)
+	{
+		length = ptr_monitor_if->getdata(data, SIZEBUFMAX);
+ 486:	4b73      	ldr	r3, [pc, #460]	; (654 <sam_ba_monitor_run+0x1dc>)
+ 488:	681b      	ldr	r3, [r3, #0]
+ 48a:	691b      	ldr	r3, [r3, #16]
+ 48c:	2140      	movs	r1, #64	; 0x40
+ 48e:	a801      	add	r0, sp, #4
+ 490:	4798      	blx	r3
+ 492:	0007      	movs	r7, r0
+		ptr = data;
+		for (uint32_t i = 0; i < length; i++)
+ 494:	2500      	movs	r5, #0
+		ptr = data;
+ 496:	ac01      	add	r4, sp, #4
+		for (uint32_t i = 0; i < length; i++)
+ 498:	e054      	b.n	544 <sam_ba_monitor_run+0xcc>
+		{
+			if (*ptr != 0xff)
+			{
+				if (*ptr == '#')
+				{
+					if (b_terminal_mode)
+ 49a:	4b6f      	ldr	r3, [pc, #444]	; (658 <sam_ba_monitor_run+0x1e0>)
+ 49c:	781b      	ldrb	r3, [r3, #0]
+ 49e:	2b00      	cmp	r3, #0
+ 4a0:	d12c      	bne.n	4fc <sam_ba_monitor_run+0x84>
+					{
+						print_new_line();
+					}
+					if (command == 'S')
+ 4a2:	4643      	mov	r3, r8
+ 4a4:	2b53      	cmp	r3, #83	; 0x53
+ 4a6:	d02c      	beq.n	502 <sam_ba_monitor_run+0x8a>
+						if(j<current_number)
+							ptr_monitor_if->getdata_xmd(ptr_data, current_number-j);
+						
+						__asm("nop");
+					}
+					else if (command == 'R')
+ 4a8:	4643      	mov	r3, r8
+ 4aa:	2b52      	cmp	r3, #82	; 0x52
+ 4ac:	d063      	beq.n	576 <sam_ba_monitor_run+0xfe>
+					{
+						ptr_monitor_if->putdata_xmd(ptr_data, current_number);
+					}
+					else if (command == 'O')
+ 4ae:	4643      	mov	r3, r8
+ 4b0:	2b4f      	cmp	r3, #79	; 0x4f
+ 4b2:	d067      	beq.n	584 <sam_ba_monitor_run+0x10c>
+					{
+						*ptr_data = (char) current_number;
+					}
+					else if (command == 'H')
+ 4b4:	4643      	mov	r3, r8
+ 4b6:	2b48      	cmp	r3, #72	; 0x48
+ 4b8:	d06a      	beq.n	590 <sam_ba_monitor_run+0x118>
+					{
+						*((uint16_t *) ptr_data) = (uint16_t) current_number;
+					}
+					else if (command == 'W')
+ 4ba:	4643      	mov	r3, r8
+ 4bc:	2b57      	cmp	r3, #87	; 0x57
+ 4be:	d06d      	beq.n	59c <sam_ba_monitor_run+0x124>
+					{
+						*((int *) ptr_data) = current_number;
+					}
+					else if (command == 'o')
+ 4c0:	4643      	mov	r3, r8
+ 4c2:	2b6f      	cmp	r3, #111	; 0x6f
+ 4c4:	d06d      	beq.n	5a2 <sam_ba_monitor_run+0x12a>
+					{
+						sam_ba_putdata_term(ptr_data, 1);
+					}
+					else if (command == 'h')
+ 4c6:	4643      	mov	r3, r8
+ 4c8:	2b68      	cmp	r3, #104	; 0x68
+ 4ca:	d06f      	beq.n	5ac <sam_ba_monitor_run+0x134>
+					{
+						current_number = *((uint16_t *) ptr_data);
+						sam_ba_putdata_term((uint8_t*) &current_number, 2);
+					}
+					else if (command == 'w')
+ 4cc:	4643      	mov	r3, r8
+ 4ce:	2b77      	cmp	r3, #119	; 0x77
+ 4d0:	d073      	beq.n	5ba <sam_ba_monitor_run+0x142>
+					{
+						current_number = *((uint32_t *) ptr_data);
+						sam_ba_putdata_term((uint8_t*) &current_number, 4);
+					}
+					else if (command == 'G')
+ 4d2:	4643      	mov	r3, r8
+ 4d4:	2b47      	cmp	r3, #71	; 0x47
+ 4d6:	d077      	beq.n	5c8 <sam_ba_monitor_run+0x150>
+						//ptr_monitor_if->put_c(0x6);
+						/* Rebase the Stack Pointer */
+						__set_MSP(sp);
+						cpu_irq_enable();
+					}
+					else if (command == 'T')
+ 4d8:	4643      	mov	r3, r8
+ 4da:	2b54      	cmp	r3, #84	; 0x54
+ 4dc:	d100      	bne.n	4e0 <sam_ba_monitor_run+0x68>
+ 4de:	e07e      	b.n	5de <sam_ba_monitor_run+0x166>
+					{
+						b_terminal_mode = 1;
+						print_new_line();
+					}
+					else if (command == 'N')
+ 4e0:	4643      	mov	r3, r8
+ 4e2:	2b4e      	cmp	r3, #78	; 0x4e
+ 4e4:	d100      	bne.n	4e8 <sam_ba_monitor_run+0x70>
+ 4e6:	e080      	b.n	5ea <sam_ba_monitor_run+0x172>
+						{
+							print_new_line();
+						}
+						b_terminal_mode = 0;
+					}
+					else if (command == 'V')
+ 4e8:	4643      	mov	r3, r8
+ 4ea:	2b56      	cmp	r3, #86	; 0x56
+ 4ec:	d120      	bne.n	530 <sam_ba_monitor_run+0xb8>
+					{
+						ptr_monitor_if->putdata((uint8_t *) RomBOOT_Version, strlen(RomBOOT_Version));
+ 4ee:	4b59      	ldr	r3, [pc, #356]	; (654 <sam_ba_monitor_run+0x1dc>)
+ 4f0:	681b      	ldr	r3, [r3, #0]
+ 4f2:	68db      	ldr	r3, [r3, #12]
+ 4f4:	211b      	movs	r1, #27
+ 4f6:	4859      	ldr	r0, [pc, #356]	; (65c <sam_ba_monitor_run+0x1e4>)
+ 4f8:	4798      	blx	r3
+ 4fa:	e019      	b.n	530 <sam_ba_monitor_run+0xb8>
+						print_new_line();
+ 4fc:	4b58      	ldr	r3, [pc, #352]	; (660 <sam_ba_monitor_run+0x1e8>)
+ 4fe:	4798      	blx	r3
+ 500:	e7cf      	b.n	4a2 <sam_ba_monitor_run+0x2a>
+							ptr++;
+ 502:	3401      	adds	r4, #1
+							i++;
+ 504:	3501      	adds	r5, #1
+							u8tmp=MIN((length-i),current_number);
+ 506:	9a11      	ldr	r2, [sp, #68]	; 0x44
+ 508:	1b78      	subs	r0, r7, r5
+ 50a:	4290      	cmp	r0, r2
+ 50c:	d900      	bls.n	510 <sam_ba_monitor_run+0x98>
+ 50e:	0010      	movs	r0, r2
+							for(j=0;j<u8tmp; j++)
+ 510:	2100      	movs	r1, #0
+ 512:	e005      	b.n	520 <sam_ba_monitor_run+0xa8>
+								*ptr_data = *ptr;
+ 514:	7822      	ldrb	r2, [r4, #0]
+ 516:	7032      	strb	r2, [r6, #0]
+								ptr_data++;
+ 518:	3601      	adds	r6, #1
+								ptr++;
+ 51a:	3401      	adds	r4, #1
+								i++;
+ 51c:	3501      	adds	r5, #1
+							for(j=0;j<u8tmp; j++)
+ 51e:	3101      	adds	r1, #1
+ 520:	4281      	cmp	r1, r0
+ 522:	d3f7      	bcc.n	514 <sam_ba_monitor_run+0x9c>
+						i--;
+ 524:	3d01      	subs	r5, #1
+						ptr--;
+ 526:	3c01      	subs	r4, #1
+						if(j<current_number)
+ 528:	9b11      	ldr	r3, [sp, #68]	; 0x44
+ 52a:	4299      	cmp	r1, r3
+ 52c:	d31c      	bcc.n	568 <sam_ba_monitor_run+0xf0>
+						__asm("nop");
+ 52e:	46c0      	nop			; (mov r8, r8)
+					}
+
+					command = 'z';
+					current_number = 0;
+ 530:	2300      	movs	r3, #0
+ 532:	9311      	str	r3, [sp, #68]	; 0x44
+
+					if (b_terminal_mode)
+ 534:	4b48      	ldr	r3, [pc, #288]	; (658 <sam_ba_monitor_run+0x1e0>)
+ 536:	781b      	ldrb	r3, [r3, #0]
+ 538:	2b00      	cmp	r3, #0
+ 53a:	d161      	bne.n	600 <sam_ba_monitor_run+0x188>
+					command = 'z';
+ 53c:	237a      	movs	r3, #122	; 0x7a
+ 53e:	4698      	mov	r8, r3
+					{
+						command = *ptr;
+						current_number = 0;
+					}
+				}
+				ptr++;
+ 540:	3401      	adds	r4, #1
+		for (uint32_t i = 0; i < length; i++)
+ 542:	3501      	adds	r5, #1
+ 544:	42bd      	cmp	r5, r7
+ 546:	d29e      	bcs.n	486 <sam_ba_monitor_run+0xe>
+			if (*ptr != 0xff)
+ 548:	7823      	ldrb	r3, [r4, #0]
+ 54a:	2bff      	cmp	r3, #255	; 0xff
+ 54c:	d0f9      	beq.n	542 <sam_ba_monitor_run+0xca>
+				if (*ptr == '#')
+ 54e:	2b23      	cmp	r3, #35	; 0x23
+ 550:	d0a3      	beq.n	49a <sam_ba_monitor_run+0x22>
+					if (('0' <= *ptr) && (*ptr <= '9'))
+ 552:	001a      	movs	r2, r3
+ 554:	3a30      	subs	r2, #48	; 0x30
+ 556:	b2d2      	uxtb	r2, r2
+ 558:	2a09      	cmp	r2, #9
+ 55a:	d85a      	bhi.n	612 <sam_ba_monitor_run+0x19a>
+						current_number = (current_number << 4) | (*ptr - '0');
+ 55c:	9a11      	ldr	r2, [sp, #68]	; 0x44
+ 55e:	0112      	lsls	r2, r2, #4
+ 560:	3b30      	subs	r3, #48	; 0x30
+ 562:	4313      	orrs	r3, r2
+ 564:	9311      	str	r3, [sp, #68]	; 0x44
+ 566:	e7eb      	b.n	540 <sam_ba_monitor_run+0xc8>
+							ptr_monitor_if->getdata_xmd(ptr_data, current_number-j);
+ 568:	4a3a      	ldr	r2, [pc, #232]	; (654 <sam_ba_monitor_run+0x1dc>)
+ 56a:	6812      	ldr	r2, [r2, #0]
+ 56c:	6992      	ldr	r2, [r2, #24]
+ 56e:	1a59      	subs	r1, r3, r1
+ 570:	0030      	movs	r0, r6
+ 572:	4790      	blx	r2
+ 574:	e7db      	b.n	52e <sam_ba_monitor_run+0xb6>
+						ptr_monitor_if->putdata_xmd(ptr_data, current_number);
+ 576:	4b37      	ldr	r3, [pc, #220]	; (654 <sam_ba_monitor_run+0x1dc>)
+ 578:	681b      	ldr	r3, [r3, #0]
+ 57a:	695b      	ldr	r3, [r3, #20]
+ 57c:	9911      	ldr	r1, [sp, #68]	; 0x44
+ 57e:	0030      	movs	r0, r6
+ 580:	4798      	blx	r3
+ 582:	e7d5      	b.n	530 <sam_ba_monitor_run+0xb8>
+						*ptr_data = (char) current_number;
+ 584:	466b      	mov	r3, sp
+ 586:	2244      	movs	r2, #68	; 0x44
+ 588:	189b      	adds	r3, r3, r2
+ 58a:	781b      	ldrb	r3, [r3, #0]
+ 58c:	7033      	strb	r3, [r6, #0]
+ 58e:	e7cf      	b.n	530 <sam_ba_monitor_run+0xb8>
+						*((uint16_t *) ptr_data) = (uint16_t) current_number;
+ 590:	466b      	mov	r3, sp
+ 592:	2244      	movs	r2, #68	; 0x44
+ 594:	189b      	adds	r3, r3, r2
+ 596:	881b      	ldrh	r3, [r3, #0]
+ 598:	8033      	strh	r3, [r6, #0]
+ 59a:	e7c9      	b.n	530 <sam_ba_monitor_run+0xb8>
+						*((int *) ptr_data) = current_number;
+ 59c:	9b11      	ldr	r3, [sp, #68]	; 0x44
+ 59e:	6033      	str	r3, [r6, #0]
+ 5a0:	e7c6      	b.n	530 <sam_ba_monitor_run+0xb8>
+						sam_ba_putdata_term(ptr_data, 1);
+ 5a2:	2101      	movs	r1, #1
+ 5a4:	0030      	movs	r0, r6
+ 5a6:	4b2f      	ldr	r3, [pc, #188]	; (664 <sam_ba_monitor_run+0x1ec>)
+ 5a8:	4798      	blx	r3
+ 5aa:	e7c1      	b.n	530 <sam_ba_monitor_run+0xb8>
+						current_number = *((uint16_t *) ptr_data);
+ 5ac:	8833      	ldrh	r3, [r6, #0]
+ 5ae:	9311      	str	r3, [sp, #68]	; 0x44
+						sam_ba_putdata_term((uint8_t*) &current_number, 2);
+ 5b0:	2102      	movs	r1, #2
+ 5b2:	a811      	add	r0, sp, #68	; 0x44
+ 5b4:	4b2b      	ldr	r3, [pc, #172]	; (664 <sam_ba_monitor_run+0x1ec>)
+ 5b6:	4798      	blx	r3
+ 5b8:	e7ba      	b.n	530 <sam_ba_monitor_run+0xb8>
+						current_number = *((uint32_t *) ptr_data);
+ 5ba:	6833      	ldr	r3, [r6, #0]
+ 5bc:	9311      	str	r3, [sp, #68]	; 0x44
+						sam_ba_putdata_term((uint8_t*) &current_number, 4);
+ 5be:	2104      	movs	r1, #4
+ 5c0:	a811      	add	r0, sp, #68	; 0x44
+ 5c2:	4b28      	ldr	r3, [pc, #160]	; (664 <sam_ba_monitor_run+0x1ec>)
+ 5c4:	4798      	blx	r3
+ 5c6:	e7b3      	b.n	530 <sam_ba_monitor_run+0xb8>
+						call_applet(current_number);
+ 5c8:	9811      	ldr	r0, [sp, #68]	; 0x44
+ 5ca:	4b27      	ldr	r3, [pc, #156]	; (668 <sam_ba_monitor_run+0x1f0>)
+ 5cc:	4798      	blx	r3
+						__set_MSP(sp);
+ 5ce:	4b27      	ldr	r3, [pc, #156]	; (66c <sam_ba_monitor_run+0x1f4>)
+ 5d0:	681b      	ldr	r3, [r3, #0]
+ 5d2:	f383 8808 	msr	MSP, r3
+  __ASM volatile ("dmb 0xF":::"memory");
+ 5d6:	f3bf 8f5f 	dmb	sy
+  __ASM volatile ("cpsie i" : : : "memory");
+ 5da:	b662      	cpsie	i
+ 5dc:	e7a8      	b.n	530 <sam_ba_monitor_run+0xb8>
+						b_terminal_mode = 1;
+ 5de:	2201      	movs	r2, #1
+ 5e0:	4b1d      	ldr	r3, [pc, #116]	; (658 <sam_ba_monitor_run+0x1e0>)
+ 5e2:	701a      	strb	r2, [r3, #0]
+						print_new_line();
+ 5e4:	4b1e      	ldr	r3, [pc, #120]	; (660 <sam_ba_monitor_run+0x1e8>)
+ 5e6:	4798      	blx	r3
+ 5e8:	e7a2      	b.n	530 <sam_ba_monitor_run+0xb8>
+						if (b_terminal_mode == 0)
+ 5ea:	4b1b      	ldr	r3, [pc, #108]	; (658 <sam_ba_monitor_run+0x1e0>)
+ 5ec:	781b      	ldrb	r3, [r3, #0]
+ 5ee:	2b00      	cmp	r3, #0
+ 5f0:	d003      	beq.n	5fa <sam_ba_monitor_run+0x182>
+						b_terminal_mode = 0;
+ 5f2:	2200      	movs	r2, #0
+ 5f4:	4b18      	ldr	r3, [pc, #96]	; (658 <sam_ba_monitor_run+0x1e0>)
+ 5f6:	701a      	strb	r2, [r3, #0]
+ 5f8:	e79a      	b.n	530 <sam_ba_monitor_run+0xb8>
+							print_new_line();
+ 5fa:	4b19      	ldr	r3, [pc, #100]	; (660 <sam_ba_monitor_run+0x1e8>)
+ 5fc:	4798      	blx	r3
+ 5fe:	e7f8      	b.n	5f2 <sam_ba_monitor_run+0x17a>
+						ptr_monitor_if->putdata(">", 1);
+ 600:	4b14      	ldr	r3, [pc, #80]	; (654 <sam_ba_monitor_run+0x1dc>)
+ 602:	681b      	ldr	r3, [r3, #0]
+ 604:	68db      	ldr	r3, [r3, #12]
+ 606:	2101      	movs	r1, #1
+ 608:	4819      	ldr	r0, [pc, #100]	; (670 <sam_ba_monitor_run+0x1f8>)
+ 60a:	4798      	blx	r3
+					command = 'z';
+ 60c:	237a      	movs	r3, #122	; 0x7a
+ 60e:	4698      	mov	r8, r3
+ 610:	e796      	b.n	540 <sam_ba_monitor_run+0xc8>
+					else if (('A' <= *ptr) && (*ptr <= 'F'))
+ 612:	001a      	movs	r2, r3
+ 614:	3a41      	subs	r2, #65	; 0x41
+ 616:	b2d2      	uxtb	r2, r2
+ 618:	2a05      	cmp	r2, #5
+ 61a:	d805      	bhi.n	628 <sam_ba_monitor_run+0x1b0>
+						current_number = (current_number << 4) | (*ptr - 'A' + 0xa);
+ 61c:	9a11      	ldr	r2, [sp, #68]	; 0x44
+ 61e:	0112      	lsls	r2, r2, #4
+ 620:	3b37      	subs	r3, #55	; 0x37
+ 622:	4313      	orrs	r3, r2
+ 624:	9311      	str	r3, [sp, #68]	; 0x44
+ 626:	e78b      	b.n	540 <sam_ba_monitor_run+0xc8>
+					else if (('a' <= *ptr) && (*ptr <= 'f'))
+ 628:	001a      	movs	r2, r3
+ 62a:	3a61      	subs	r2, #97	; 0x61
+ 62c:	b2d2      	uxtb	r2, r2
+ 62e:	2a05      	cmp	r2, #5
+ 630:	d805      	bhi.n	63e <sam_ba_monitor_run+0x1c6>
+						current_number = (current_number << 4) | (*ptr - 'a' + 0xa);
+ 632:	9a11      	ldr	r2, [sp, #68]	; 0x44
+ 634:	0112      	lsls	r2, r2, #4
+ 636:	3b57      	subs	r3, #87	; 0x57
+ 638:	4313      	orrs	r3, r2
+ 63a:	9311      	str	r3, [sp, #68]	; 0x44
+ 63c:	e780      	b.n	540 <sam_ba_monitor_run+0xc8>
+					else if (*ptr == ',')
+ 63e:	2b2c      	cmp	r3, #44	; 0x2c
+ 640:	d003      	beq.n	64a <sam_ba_monitor_run+0x1d2>
+						command = *ptr;
+ 642:	4698      	mov	r8, r3
+						current_number = 0;
+ 644:	2300      	movs	r3, #0
+ 646:	9311      	str	r3, [sp, #68]	; 0x44
+ 648:	e77a      	b.n	540 <sam_ba_monitor_run+0xc8>
+						ptr_data = (uint8_t *) current_number;
+ 64a:	9e11      	ldr	r6, [sp, #68]	; 0x44
+						current_number = 0;
+ 64c:	2300      	movs	r3, #0
+ 64e:	9311      	str	r3, [sp, #68]	; 0x44
+ 650:	e776      	b.n	540 <sam_ba_monitor_run+0xc8>
+ 652:	46c0      	nop			; (mov r8, r8)
+ 654:	20000020 	.word	0x20000020
+ 658:	2000001c 	.word	0x2000001c
+ 65c:	00000a14 	.word	0x00000a14
+ 660:	000003a1 	.word	0x000003a1
+ 664:	000003c5 	.word	0x000003c5
+ 668:	0000044d 	.word	0x0000044d
+ 66c:	20000024 	.word	0x20000024
+ 670:	00000a50 	.word	0x00000a50
+
+00000674 <process_sam_ba_monitor>:
+{
+ 674:	b510      	push	{r4, lr}
+		if(uart_if.is_rx_ready() && (SHARP_CHARACTER == uart_if.get_c())) {
+ 676:	4b07      	ldr	r3, [pc, #28]	; (694 <process_sam_ba_monitor+0x20>)
+ 678:	4798      	blx	r3
+ 67a:	2800      	cmp	r0, #0
+ 67c:	d100      	bne.n	680 <process_sam_ba_monitor+0xc>
+}
+ 67e:	bd10      	pop	{r4, pc}
+		if(uart_if.is_rx_ready() && (SHARP_CHARACTER == uart_if.get_c())) {
+ 680:	4b05      	ldr	r3, [pc, #20]	; (698 <process_sam_ba_monitor+0x24>)
+ 682:	4798      	blx	r3
+ 684:	2823      	cmp	r0, #35	; 0x23
+ 686:	d1fa      	bne.n	67e <process_sam_ba_monitor+0xa>
+			ptr_monitor_if = (t_monitor_if*) &uart_if;
+ 688:	4b04      	ldr	r3, [pc, #16]	; (69c <process_sam_ba_monitor+0x28>)
+ 68a:	331c      	adds	r3, #28
+ 68c:	4a04      	ldr	r2, [pc, #16]	; (6a0 <process_sam_ba_monitor+0x2c>)
+ 68e:	6013      	str	r3, [r2, #0]
+			sam_ba_monitor_run();
+ 690:	4b04      	ldr	r3, [pc, #16]	; (6a4 <process_sam_ba_monitor+0x30>)
+ 692:	4798      	blx	r3
+ 694:	000002f9 	.word	0x000002f9
+ 698:	000006c1 	.word	0x000006c1
+ 69c:	00000a14 	.word	0x00000a14
+ 6a0:	20000020 	.word	0x20000020
+ 6a4:	00000479 	.word	0x00000479
+
+000006a8 <usart_putc>:
+ * \param value      Value to put
+ *
+ * \return \c 1 if function was successfully done, otherwise \c 0.
+ */
+int usart_putc(int value)
+{
+ 6a8:	b510      	push	{r4, lr}
+	uart_write_byte(BOOT_USART_MODULE, (uint8_t)value);
+ 6aa:	b2c1      	uxtb	r1, r0
+ 6ac:	4802      	ldr	r0, [pc, #8]	; (6b8 <usart_putc+0x10>)
+ 6ae:	4b03      	ldr	r3, [pc, #12]	; (6bc <usart_putc+0x14>)
+ 6b0:	4798      	blx	r3
+	return 1;
+}
+ 6b2:	2001      	movs	r0, #1
+ 6b4:	bd10      	pop	{r4, pc}
+ 6b6:	46c0      	nop			; (mov r8, r8)
+ 6b8:	42001c00 	.word	0x42001c00
+ 6bc:	000002cd 	.word	0x000002cd
+
+000006c0 <usart_getc>:
+
+
+
+int usart_getc(void) {
+ 6c0:	b510      	push	{r4, lr}
+	uint16_t retval;
+	//Wait until input buffer is filled
+	while(!(usart_is_rx_ready()));
+ 6c2:	4b04      	ldr	r3, [pc, #16]	; (6d4 <usart_getc+0x14>)
+ 6c4:	4798      	blx	r3
+ 6c6:	2800      	cmp	r0, #0
+ 6c8:	d0fb      	beq.n	6c2 <usart_getc+0x2>
+	retval = (uint16_t)uart_read_byte(BOOT_USART_MODULE);
+ 6ca:	4803      	ldr	r0, [pc, #12]	; (6d8 <usart_getc+0x18>)
+ 6cc:	4b03      	ldr	r3, [pc, #12]	; (6dc <usart_getc+0x1c>)
+ 6ce:	4798      	blx	r3
+	//usart_read_wait(&usart_sam_ba, &retval);
+	return (int)retval;
+
+}
+ 6d0:	bd10      	pop	{r4, pc}
+ 6d2:	46c0      	nop			; (mov r8, r8)
+ 6d4:	000002f9 	.word	0x000002f9
+ 6d8:	42001c00 	.word	0x42001c00
+ 6dc:	000002df 	.word	0x000002df
+
+000006e0 <usart_putdata>:
+	}
+	return (false);
+}
+
+//Send given data (polling)
+uint32_t usart_putdata(void const* data, uint32_t length) {
+ 6e0:	b570      	push	{r4, r5, r6, lr}
+ 6e2:	000e      	movs	r6, r1
+	uint32_t i;
+	uint8_t* ptrdata;
+	ptrdata = (uint8_t*) data;
+ 6e4:	0005      	movs	r5, r0
+	for (i = 0; i < length; i++) {
+ 6e6:	2400      	movs	r4, #0
+ 6e8:	e004      	b.n	6f4 <usart_putdata+0x14>
+		usart_putc(*ptrdata);
+ 6ea:	7828      	ldrb	r0, [r5, #0]
+ 6ec:	4b03      	ldr	r3, [pc, #12]	; (6fc <usart_putdata+0x1c>)
+ 6ee:	4798      	blx	r3
+		ptrdata++;
+ 6f0:	3501      	adds	r5, #1
+	for (i = 0; i < length; i++) {
+ 6f2:	3401      	adds	r4, #1
+ 6f4:	42b4      	cmp	r4, r6
+ 6f6:	d3f8      	bcc.n	6ea <usart_putdata+0xa>
+	}
+	return (i);
+}
+ 6f8:	0020      	movs	r0, r4
+ 6fa:	bd70      	pop	{r4, r5, r6, pc}
+ 6fc:	000006a9 	.word	0x000006a9
+
+00000700 <usart_getdata>:
+
+//Get data from comm. device
+uint32_t usart_getdata(void* data, uint32_t length) {
+ 700:	b510      	push	{r4, lr}
+ 702:	0004      	movs	r4, r0
+	uint8_t* ptrdata;
+	ptrdata = (uint8_t*) data;
+	*ptrdata = usart_getc();
+ 704:	4b02      	ldr	r3, [pc, #8]	; (710 <usart_getdata+0x10>)
+ 706:	4798      	blx	r3
+ 708:	7020      	strb	r0, [r4, #0]
+	return (1);
+}
+ 70a:	2001      	movs	r0, #1
+ 70c:	bd10      	pop	{r4, pc}
+ 70e:	46c0      	nop			; (mov r8, r8)
+ 710:	000006c1 	.word	0x000006c1
+
+00000714 <add_crc>:
+//*----------------------------------------------------------------------------
+unsigned short add_crc(char ptr, unsigned short crc) {
+
+	unsigned short cmpt;
+
+	crc = crc ^ (int) ptr << 8;
+ 714:	0200      	lsls	r0, r0, #8
+ 716:	4048      	eors	r0, r1
+
+	for (cmpt = 0; cmpt < 8; cmpt++) {
+ 718:	2300      	movs	r3, #0
+ 71a:	e005      	b.n	728 <add_crc+0x14>
+		if (crc & 0x8000)
+			crc = crc << 1 ^ CRC16POLY;
+ 71c:	0040      	lsls	r0, r0, #1
+ 71e:	4907      	ldr	r1, [pc, #28]	; (73c <add_crc+0x28>)
+ 720:	4048      	eors	r0, r1
+ 722:	b280      	uxth	r0, r0
+	for (cmpt = 0; cmpt < 8; cmpt++) {
+ 724:	3301      	adds	r3, #1
+ 726:	b29b      	uxth	r3, r3
+ 728:	2b07      	cmp	r3, #7
+ 72a:	d805      	bhi.n	738 <add_crc+0x24>
+		if (crc & 0x8000)
+ 72c:	b202      	sxth	r2, r0
+ 72e:	2a00      	cmp	r2, #0
+ 730:	dbf4      	blt.n	71c <add_crc+0x8>
+		else
+			crc = crc << 1;
+ 732:	0040      	lsls	r0, r0, #1
+ 734:	b280      	uxth	r0, r0
+ 736:	e7f5      	b.n	724 <add_crc+0x10>
+	}
+
+	return (crc & 0xFFFF);
+}
+ 738:	4770      	bx	lr
+ 73a:	46c0      	nop			; (mov r8, r8)
+ 73c:	00001021 	.word	0x00001021
+
+00000740 <getbytes>:
+
+//*----------------------------------------------------------------------------
+//* \fn    getbytes
+//* \brief
+//*----------------------------------------------------------------------------
+static uint16_t getbytes(uint8_t *ptr_data, uint16_t length) {
+ 740:	b5f0      	push	{r4, r5, r6, r7, lr}
+ 742:	b083      	sub	sp, #12
+ 744:	0007      	movs	r7, r0
+ 746:	000e      	movs	r6, r1
+	uint16_t crc = 0;
+	uint16_t cpt;
+	uint8_t c;
+
+	for (cpt = 0; cpt < length; ++cpt) {
+ 748:	2400      	movs	r4, #0
+	uint16_t crc = 0;
+ 74a:	2300      	movs	r3, #0
+ 74c:	9301      	str	r3, [sp, #4]
+	for (cpt = 0; cpt < length; ++cpt) {
+ 74e:	e006      	b.n	75e <getbytes+0x1e>
+		c = usart_getc();
+		crc = add_crc(c, crc);
+		//crc = (crc << 8) ^ xcrc16tab[(crc>>8) ^ c];
+		if (size_of_data || mode_of_transfer) {
+			*ptr_data++ = c;
+ 750:	1c7b      	adds	r3, r7, #1
+ 752:	703d      	strb	r5, [r7, #0]
+			if (length == PKTLEN_128)
+ 754:	2e80      	cmp	r6, #128	; 0x80
+ 756:	d015      	beq.n	784 <getbytes+0x44>
+			*ptr_data++ = c;
+ 758:	001f      	movs	r7, r3
+	for (cpt = 0; cpt < length; ++cpt) {
+ 75a:	3401      	adds	r4, #1
+ 75c:	b2a4      	uxth	r4, r4
+ 75e:	42b4      	cmp	r4, r6
+ 760:	d216      	bcs.n	790 <getbytes+0x50>
+		c = usart_getc();
+ 762:	4b0d      	ldr	r3, [pc, #52]	; (798 <getbytes+0x58>)
+ 764:	4798      	blx	r3
+ 766:	b2c5      	uxtb	r5, r0
+		crc = add_crc(c, crc);
+ 768:	9901      	ldr	r1, [sp, #4]
+ 76a:	0028      	movs	r0, r5
+ 76c:	4b0b      	ldr	r3, [pc, #44]	; (79c <getbytes+0x5c>)
+ 76e:	4798      	blx	r3
+ 770:	9001      	str	r0, [sp, #4]
+		if (size_of_data || mode_of_transfer) {
+ 772:	4b0b      	ldr	r3, [pc, #44]	; (7a0 <getbytes+0x60>)
+ 774:	881b      	ldrh	r3, [r3, #0]
+ 776:	2b00      	cmp	r3, #0
+ 778:	d1ea      	bne.n	750 <getbytes+0x10>
+ 77a:	4b0a      	ldr	r3, [pc, #40]	; (7a4 <getbytes+0x64>)
+ 77c:	781b      	ldrb	r3, [r3, #0]
+ 77e:	2b00      	cmp	r3, #0
+ 780:	d0eb      	beq.n	75a <getbytes+0x1a>
+ 782:	e7e5      	b.n	750 <getbytes+0x10>
+				size_of_data--;
+ 784:	4906      	ldr	r1, [pc, #24]	; (7a0 <getbytes+0x60>)
+ 786:	880a      	ldrh	r2, [r1, #0]
+ 788:	3a01      	subs	r2, #1
+ 78a:	800a      	strh	r2, [r1, #0]
+			*ptr_data++ = c;
+ 78c:	001f      	movs	r7, r3
+ 78e:	e7e4      	b.n	75a <getbytes+0x1a>
+		}
+	}
+
+	return crc;
+}
+ 790:	9801      	ldr	r0, [sp, #4]
+ 792:	b003      	add	sp, #12
+ 794:	bdf0      	pop	{r4, r5, r6, r7, pc}
+ 796:	46c0      	nop			; (mov r8, r8)
+ 798:	000006c1 	.word	0x000006c1
+ 79c:	00000715 	.word	0x00000715
+ 7a0:	20000028 	.word	0x20000028
+ 7a4:	2000002a 	.word	0x2000002a
+
+000007a8 <putPacket>:
+
+//*----------------------------------------------------------------------------
+//* \fn    putPacket
+//* \brief Used by Xup to send packets.
+//*----------------------------------------------------------------------------
+static int putPacket(uint8_t *tmppkt, uint8_t sno) {
+ 7a8:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 7aa:	0007      	movs	r7, r0
+ 7ac:	000c      	movs	r4, r1
+	uint16_t chksm;
+	uint8_t data;
+
+	chksm = 0;
+
+	usart_putc(SOH);
+ 7ae:	2001      	movs	r0, #1
+ 7b0:	4d15      	ldr	r5, [pc, #84]	; (808 <putPacket+0x60>)
+ 7b2:	47a8      	blx	r5
+
+	usart_putc(sno);
+ 7b4:	0020      	movs	r0, r4
+ 7b6:	47a8      	blx	r5
+	usart_putc((uint8_t) ~(sno));
+ 7b8:	43e0      	mvns	r0, r4
+ 7ba:	b2c0      	uxtb	r0, r0
+ 7bc:	47a8      	blx	r5
+	chksm = 0;
+ 7be:	2400      	movs	r4, #0
+
+	for (i = 0; i < PKTLEN_128; i++) {
+ 7c0:	2600      	movs	r6, #0
+ 7c2:	e00d      	b.n	7e0 <putPacket+0x38>
+		if (size_of_data || mode_of_transfer) {
+			data = *tmppkt++;
+ 7c4:	783d      	ldrb	r5, [r7, #0]
+			size_of_data--;
+ 7c6:	3b01      	subs	r3, #1
+ 7c8:	4a10      	ldr	r2, [pc, #64]	; (80c <putPacket+0x64>)
+ 7ca:	8013      	strh	r3, [r2, #0]
+			data = *tmppkt++;
+ 7cc:	3701      	adds	r7, #1
+		} else
+			data = 0x00;
+
+		usart_putc(data);
+ 7ce:	0028      	movs	r0, r5
+ 7d0:	4b0d      	ldr	r3, [pc, #52]	; (808 <putPacket+0x60>)
+ 7d2:	4798      	blx	r3
+
+		//chksm = (chksm<<8) ^ xcrc16tab[(chksm>>8)^data];
+		chksm = add_crc(data, chksm);
+ 7d4:	0021      	movs	r1, r4
+ 7d6:	0028      	movs	r0, r5
+ 7d8:	4b0d      	ldr	r3, [pc, #52]	; (810 <putPacket+0x68>)
+ 7da:	4798      	blx	r3
+ 7dc:	0004      	movs	r4, r0
+	for (i = 0; i < PKTLEN_128; i++) {
+ 7de:	3601      	adds	r6, #1
+ 7e0:	2e7f      	cmp	r6, #127	; 0x7f
+ 7e2:	d808      	bhi.n	7f6 <putPacket+0x4e>
+		if (size_of_data || mode_of_transfer) {
+ 7e4:	4b09      	ldr	r3, [pc, #36]	; (80c <putPacket+0x64>)
+ 7e6:	881b      	ldrh	r3, [r3, #0]
+ 7e8:	2b00      	cmp	r3, #0
+ 7ea:	d1eb      	bne.n	7c4 <putPacket+0x1c>
+ 7ec:	4a09      	ldr	r2, [pc, #36]	; (814 <putPacket+0x6c>)
+ 7ee:	7815      	ldrb	r5, [r2, #0]
+ 7f0:	2d00      	cmp	r5, #0
+ 7f2:	d0ec      	beq.n	7ce <putPacket+0x26>
+ 7f4:	e7e6      	b.n	7c4 <putPacket+0x1c>
+	}
+
+	/* An "endian independent way to extract the CRC bytes. */
+	usart_putc((uint8_t) (chksm >> 8));
+ 7f6:	0a20      	lsrs	r0, r4, #8
+ 7f8:	b2c0      	uxtb	r0, r0
+ 7fa:	4d03      	ldr	r5, [pc, #12]	; (808 <putPacket+0x60>)
+ 7fc:	47a8      	blx	r5
+	usart_putc((uint8_t) chksm);
+ 7fe:	b2e0      	uxtb	r0, r4
+ 800:	47a8      	blx	r5
+
+	return (usart_getc()); /* Wait for ack */
+ 802:	4b05      	ldr	r3, [pc, #20]	; (818 <putPacket+0x70>)
+ 804:	4798      	blx	r3
+}
+ 806:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+ 808:	000006a9 	.word	0x000006a9
+ 80c:	20000028 	.word	0x20000028
+ 810:	00000715 	.word	0x00000715
+ 814:	2000002a 	.word	0x2000002a
+ 818:	000006c1 	.word	0x000006c1
+
+0000081c <getPacket>:
+
+//*----------------------------------------------------------------------------
+//* \fn    getPacket
+//* \brief Used by Xdown to retrieve packets.
+//*----------------------------------------------------------------------------
+uint8_t getPacket(uint8_t *ptr_data, uint8_t sno) {
+ 81c:	b5f0      	push	{r4, r5, r6, r7, lr}
+ 81e:	b083      	sub	sp, #12
+ 820:	0006      	movs	r6, r0
+ 822:	000d      	movs	r5, r1
+	uint8_t seq[2];
+	uint16_t crc, xcrc;
+
+	getbytes(seq, 2);
+ 824:	2102      	movs	r1, #2
+ 826:	a801      	add	r0, sp, #4
+ 828:	4c12      	ldr	r4, [pc, #72]	; (874 <getPacket+0x58>)
+ 82a:	47a0      	blx	r4
+	xcrc = getbytes(ptr_data, PKTLEN_128);
+ 82c:	2180      	movs	r1, #128	; 0x80
+ 82e:	0030      	movs	r0, r6
+ 830:	47a0      	blx	r4
+ 832:	0006      	movs	r6, r0
+
+	/* An "endian independent way to combine the CRC bytes. */
+	crc = (uint16_t) usart_getc() << 8;
+ 834:	4f10      	ldr	r7, [pc, #64]	; (878 <getPacket+0x5c>)
+ 836:	47b8      	blx	r7
+ 838:	b280      	uxth	r0, r0
+ 83a:	0200      	lsls	r0, r0, #8
+ 83c:	b284      	uxth	r4, r0
+	crc += (uint16_t) usart_getc();
+ 83e:	47b8      	blx	r7
+ 840:	b280      	uxth	r0, r0
+ 842:	1824      	adds	r4, r4, r0
+ 844:	b2a4      	uxth	r4, r4
+
+	if ((crc != xcrc) || (seq[0] != sno) || (seq[1] != (uint8_t) (~sno))) {
+ 846:	42a6      	cmp	r6, r4
+ 848:	d103      	bne.n	852 <getPacket+0x36>
+ 84a:	ab01      	add	r3, sp, #4
+ 84c:	781b      	ldrb	r3, [r3, #0]
+ 84e:	42ab      	cmp	r3, r5
+ 850:	d005      	beq.n	85e <getPacket+0x42>
+		usart_putc(CAN);
+ 852:	2018      	movs	r0, #24
+ 854:	4b09      	ldr	r3, [pc, #36]	; (87c <getPacket+0x60>)
+ 856:	4798      	blx	r3
+		return (false);
+ 858:	2000      	movs	r0, #0
+	}
+
+	usart_putc(ACK);
+	return (true);
+}
+ 85a:	b003      	add	sp, #12
+ 85c:	bdf0      	pop	{r4, r5, r6, r7, pc}
+	if ((crc != xcrc) || (seq[0] != sno) || (seq[1] != (uint8_t) (~sno))) {
+ 85e:	ab01      	add	r3, sp, #4
+ 860:	785b      	ldrb	r3, [r3, #1]
+ 862:	43ed      	mvns	r5, r5
+ 864:	b2ed      	uxtb	r5, r5
+ 866:	42ab      	cmp	r3, r5
+ 868:	d1f3      	bne.n	852 <getPacket+0x36>
+	usart_putc(ACK);
+ 86a:	2006      	movs	r0, #6
+ 86c:	4b03      	ldr	r3, [pc, #12]	; (87c <getPacket+0x60>)
+ 86e:	4798      	blx	r3
+	return (true);
+ 870:	2001      	movs	r0, #1
+ 872:	e7f2      	b.n	85a <getPacket+0x3e>
+ 874:	00000741 	.word	0x00000741
+ 878:	000006c1 	.word	0x000006c1
+ 87c:	000006a9 	.word	0x000006a9
+
+00000880 <usart_putdata_xmd>:
+//* \brief Called when a transfer from target to host is being made (considered
+//*        an upload).
+//*----------------------------------------------------------------------------
+//static void Xup(char *ptr_data, uint16_t length)
+//Send given data (polling) using xmodem (if necessary)
+uint32_t usart_putdata_xmd(void const* data, uint32_t length) {
+ 880:	b570      	push	{r4, r5, r6, lr}
+ 882:	0005      	movs	r5, r0
+ 884:	1e0e      	subs	r6, r1, #0
+	uint8_t c, sno = 1;
+	uint8_t done;
+	uint8_t * ptr_data = (uint8_t *) data;
+
+	if (!length)
+ 886:	d109      	bne.n	89c <usart_putdata_xmd+0x1c>
+		mode_of_transfer = 1;
+ 888:	2201      	movs	r2, #1
+ 88a:	4b1c      	ldr	r3, [pc, #112]	; (8fc <usart_putdata_xmd+0x7c>)
+ 88c:	701a      	strb	r2, [r3, #0]
+	else {
+		size_of_data = length;
+		mode_of_transfer = 0;
+	}
+
+	if (length & (PKTLEN_128 - 1)) {
+ 88e:	0673      	lsls	r3, r6, #25
+ 890:	d002      	beq.n	898 <usart_putdata_xmd+0x18>
+		length += PKTLEN_128;
+ 892:	3680      	adds	r6, #128	; 0x80
+		length &= ~(PKTLEN_128 - 1);
+ 894:	237f      	movs	r3, #127	; 0x7f
+ 896:	439e      	bics	r6, r3
+	}
+
+	/* Startup synchronization... */
+	/* Wait to receive a NAK or 'C' from receiver. */
+	done = 0;
+ 898:	2400      	movs	r4, #0
+	while (!done) {
+ 89a:	e006      	b.n	8aa <usart_putdata_xmd+0x2a>
+		size_of_data = length;
+ 89c:	4b18      	ldr	r3, [pc, #96]	; (900 <usart_putdata_xmd+0x80>)
+ 89e:	8019      	strh	r1, [r3, #0]
+		mode_of_transfer = 0;
+ 8a0:	2200      	movs	r2, #0
+ 8a2:	4b16      	ldr	r3, [pc, #88]	; (8fc <usart_putdata_xmd+0x7c>)
+ 8a4:	701a      	strb	r2, [r3, #0]
+ 8a6:	e7f2      	b.n	88e <usart_putdata_xmd+0xe>
+		c = (uint8_t) usart_getc();
+
+		switch (c) {
+			case NAK:
+				done = 1;
+ 8a8:	2401      	movs	r4, #1
+	while (!done) {
+ 8aa:	2c00      	cmp	r4, #0
+ 8ac:	d110      	bne.n	8d0 <usart_putdata_xmd+0x50>
+		c = (uint8_t) usart_getc();
+ 8ae:	4b15      	ldr	r3, [pc, #84]	; (904 <usart_putdata_xmd+0x84>)
+ 8b0:	4798      	blx	r3
+		switch (c) {
+ 8b2:	23ff      	movs	r3, #255	; 0xff
+ 8b4:	4018      	ands	r0, r3
+ 8b6:	2843      	cmp	r0, #67	; 0x43
+ 8b8:	d0f6      	beq.n	8a8 <usart_putdata_xmd+0x28>
+ 8ba:	2871      	cmp	r0, #113	; 0x71
+ 8bc:	d01b      	beq.n	8f6 <usart_putdata_xmd+0x76>
+ 8be:	2815      	cmp	r0, #21
+ 8c0:	d1f3      	bne.n	8aa <usart_putdata_xmd+0x2a>
+ 8c2:	e7f1      	b.n	8a8 <usart_putdata_xmd+0x28>
+	while (!done) {
+		c = (uint8_t) putPacket((uint8_t *) ptr_data, sno);
+
+		switch (c) {
+			case ACK:
+				++sno;
+ 8c4:	3401      	adds	r4, #1
+ 8c6:	b2e4      	uxtb	r4, r4
+				length -= PKTLEN_128;
+ 8c8:	3e80      	subs	r6, #128	; 0x80
+				ptr_data += PKTLEN_128;
+ 8ca:	3580      	adds	r5, #128	; 0x80
+			case EOT:
+			default:
+				done = 0;
+				break;
+		}
+		if (!length) {
+ 8cc:	2e00      	cmp	r6, #0
+ 8ce:	d008      	beq.n	8e2 <usart_putdata_xmd+0x62>
+		c = (uint8_t) putPacket((uint8_t *) ptr_data, sno);
+ 8d0:	0021      	movs	r1, r4
+ 8d2:	0028      	movs	r0, r5
+ 8d4:	4b0c      	ldr	r3, [pc, #48]	; (908 <usart_putdata_xmd+0x88>)
+ 8d6:	4798      	blx	r3
+		switch (c) {
+ 8d8:	23ff      	movs	r3, #255	; 0xff
+ 8da:	4018      	ands	r0, r3
+ 8dc:	2806      	cmp	r0, #6
+ 8de:	d0f1      	beq.n	8c4 <usart_putdata_xmd+0x44>
+ 8e0:	e7f4      	b.n	8cc <usart_putdata_xmd+0x4c>
+			usart_putc(EOT);
+ 8e2:	2004      	movs	r0, #4
+ 8e4:	4b09      	ldr	r3, [pc, #36]	; (90c <usart_putdata_xmd+0x8c>)
+ 8e6:	4798      	blx	r3
+			usart_getc(); /* Flush the ACK */
+ 8e8:	4b06      	ldr	r3, [pc, #24]	; (904 <usart_putdata_xmd+0x84>)
+ 8ea:	4798      	blx	r3
+			break;
+		}
+		// ("!");
+	}
+
+	mode_of_transfer = 0;
+ 8ec:	2200      	movs	r2, #0
+ 8ee:	4b03      	ldr	r3, [pc, #12]	; (8fc <usart_putdata_xmd+0x7c>)
+ 8f0:	701a      	strb	r2, [r3, #0]
+	// ("Xup_done.");
+	return (1);
+ 8f2:	2001      	movs	r0, #1
+ 8f4:	e000      	b.n	8f8 <usart_putdata_xmd+0x78>
+				return (0);
+ 8f6:	2000      	movs	r0, #0
+	//    return(0);
+}
+ 8f8:	bd70      	pop	{r4, r5, r6, pc}
+ 8fa:	46c0      	nop			; (mov r8, r8)
+ 8fc:	2000002a 	.word	0x2000002a
+ 900:	20000028 	.word	0x20000028
+ 904:	000006c1 	.word	0x000006c1
+ 908:	000007a9 	.word	0x000007a9
+ 90c:	000006a9 	.word	0x000006a9
+
+00000910 <usart_getdata_xmd>:
+//* \brief Called when a transfer from host to target is being made (considered
+//*        an download).
+//*----------------------------------------------------------------------------
+//static void Xdown(char *ptr_data, uint16_t length)
+//Get data from comm. device using xmodem (if necessary)
+uint32_t usart_getdata_xmd(void* data, uint32_t length) {
+ 910:	b570      	push	{r4, r5, r6, lr}
+ 912:	0005      	movs	r5, r0
+	uint32_t data_transfered = 0;
+
+	//Copied from legacy source code ... might need some tweaking
+	uint32_t loops_per_second = CPU_FREQUENCY/10; /* system_clock_source_get_hz(BOOT_USART_GCLK_GEN_SOURCE) / 10; */
+
+	if (length == 0)
+ 914:	2900      	cmp	r1, #0
+ 916:	d104      	bne.n	922 <usart_getdata_xmd+0x12>
+		mode_of_transfer = 1;
+ 918:	2201      	movs	r2, #1
+ 91a:	4b1f      	ldr	r3, [pc, #124]	; (998 <usart_getdata_xmd+0x88>)
+ 91c:	701a      	strb	r2, [r3, #0]
+uint32_t usart_getdata_xmd(void* data, uint32_t length) {
+ 91e:	2664      	movs	r6, #100	; 0x64
+ 920:	e011      	b.n	946 <usart_getdata_xmd+0x36>
+	else {
+		size_of_data = length;
+ 922:	4b1e      	ldr	r3, [pc, #120]	; (99c <usart_getdata_xmd+0x8c>)
+ 924:	8019      	strh	r1, [r3, #0]
+		mode_of_transfer = 0;
+ 926:	2200      	movs	r2, #0
+ 928:	4b1b      	ldr	r3, [pc, #108]	; (998 <usart_getdata_xmd+0x88>)
+ 92a:	701a      	strb	r2, [r3, #0]
+ 92c:	e7f7      	b.n	91e <usart_getdata_xmd+0xe>
+	// ("Xdown");
+	while (1) {
+		usart_putc('C');
+		timeout = loops_per_second;
+		while (!(usart_is_rx_ready()) && timeout)
+			timeout--;
+ 92e:	3c01      	subs	r4, #1
+		while (!(usart_is_rx_ready()) && timeout)
+ 930:	4b1b      	ldr	r3, [pc, #108]	; (9a0 <usart_getdata_xmd+0x90>)
+ 932:	4798      	blx	r3
+ 934:	2800      	cmp	r0, #0
+ 936:	d101      	bne.n	93c <usart_getdata_xmd+0x2c>
+ 938:	2c00      	cmp	r4, #0
+ 93a:	d1f8      	bne.n	92e <usart_getdata_xmd+0x1e>
+		if (timeout)
+ 93c:	2c00      	cmp	r4, #0
+ 93e:	d122      	bne.n	986 <usart_getdata_xmd+0x76>
+			break;
+
+		if (!(--nbr_of_timeout))
+ 940:	3e01      	subs	r6, #1
+ 942:	2e00      	cmp	r6, #0
+ 944:	d025      	beq.n	992 <usart_getdata_xmd+0x82>
+		usart_putc('C');
+ 946:	2043      	movs	r0, #67	; 0x43
+ 948:	4b16      	ldr	r3, [pc, #88]	; (9a4 <usart_getdata_xmd+0x94>)
+ 94a:	4798      	blx	r3
+		timeout = loops_per_second;
+ 94c:	4c16      	ldr	r4, [pc, #88]	; (9a8 <usart_getdata_xmd+0x98>)
+		while (!(usart_is_rx_ready()) && timeout)
+ 94e:	e7ef      	b.n	930 <usart_getdata_xmd+0x20>
+		c = (char) usart_getc();
+
+		switch (c) {
+			case SOH: /* 128-byte incoming packet */
+				// ("O");
+				b_run = getPacket(ptr_data, sno);
+ 950:	0021      	movs	r1, r4
+ 952:	0028      	movs	r0, r5
+ 954:	4b15      	ldr	r3, [pc, #84]	; (9ac <usart_getdata_xmd+0x9c>)
+ 956:	4798      	blx	r3
+ 958:	0002      	movs	r2, r0
+				if (b_run == true) {
+ 95a:	2801      	cmp	r0, #1
+ 95c:	d00f      	beq.n	97e <usart_getdata_xmd+0x6e>
+	while (b_run != false) {
+ 95e:	2a00      	cmp	r2, #0
+ 960:	d014      	beq.n	98c <usart_getdata_xmd+0x7c>
+		c = (char) usart_getc();
+ 962:	4b13      	ldr	r3, [pc, #76]	; (9b0 <usart_getdata_xmd+0xa0>)
+ 964:	4798      	blx	r3
+				b_run = false;
+				break;
+			case CAN: // ("C");
+			case ESC: /* "X" User-invoked abort */
+			default:
+				b_run = false;
+ 966:	2200      	movs	r2, #0
+		switch (c) {
+ 968:	23ff      	movs	r3, #255	; 0xff
+ 96a:	4018      	ands	r0, r3
+ 96c:	2801      	cmp	r0, #1
+ 96e:	d0ef      	beq.n	950 <usart_getdata_xmd+0x40>
+ 970:	2804      	cmp	r0, #4
+ 972:	d1f4      	bne.n	95e <usart_getdata_xmd+0x4e>
+				usart_putc(ACK);
+ 974:	2006      	movs	r0, #6
+ 976:	4b0b      	ldr	r3, [pc, #44]	; (9a4 <usart_getdata_xmd+0x94>)
+ 978:	4798      	blx	r3
+				b_run = false;
+ 97a:	2200      	movs	r2, #0
+				break;
+ 97c:	e7ef      	b.n	95e <usart_getdata_xmd+0x4e>
+					++sno;
+ 97e:	3401      	adds	r4, #1
+ 980:	b2e4      	uxtb	r4, r4
+					ptr_data += PKTLEN_128;
+ 982:	3580      	adds	r5, #128	; 0x80
+ 984:	e7eb      	b.n	95e <usart_getdata_xmd+0x4e>
+ 986:	2401      	movs	r4, #1
+ 988:	2201      	movs	r2, #1
+ 98a:	e7e8      	b.n	95e <usart_getdata_xmd+0x4e>
+				break;
+		}
+		// ("!");
+	}
+	mode_of_transfer = 0;
+ 98c:	4b02      	ldr	r3, [pc, #8]	; (998 <usart_getdata_xmd+0x88>)
+ 98e:	701a      	strb	r2, [r3, #0]
+	return (true);
+ 990:	2601      	movs	r6, #1
+//    return(b_run);
+}
+ 992:	0030      	movs	r0, r6
+ 994:	bd70      	pop	{r4, r5, r6, pc}
+ 996:	46c0      	nop			; (mov r8, r8)
+ 998:	2000002a 	.word	0x2000002a
+ 99c:	20000028 	.word	0x20000028
+ 9a0:	000002f9 	.word	0x000002f9
+ 9a4:	000006a9 	.word	0x000006a9
+ 9a8:	000c3500 	.word	0x000c3500
+ 9ac:	0000081d 	.word	0x0000081d
+ 9b0:	000006c1 	.word	0x000006c1
+
+000009b4 <__libc_init_array>:
+ 9b4:	b570      	push	{r4, r5, r6, lr}
+ 9b6:	2600      	movs	r6, #0
+ 9b8:	4d0c      	ldr	r5, [pc, #48]	; (9ec <__libc_init_array+0x38>)
+ 9ba:	4c0d      	ldr	r4, [pc, #52]	; (9f0 <__libc_init_array+0x3c>)
+ 9bc:	1b64      	subs	r4, r4, r5
+ 9be:	10a4      	asrs	r4, r4, #2
+ 9c0:	42a6      	cmp	r6, r4
+ 9c2:	d109      	bne.n	9d8 <__libc_init_array+0x24>
+ 9c4:	2600      	movs	r6, #0
+ 9c6:	f000 f845 	bl	a54 <_init>
+ 9ca:	4d0a      	ldr	r5, [pc, #40]	; (9f4 <__libc_init_array+0x40>)
+ 9cc:	4c0a      	ldr	r4, [pc, #40]	; (9f8 <__libc_init_array+0x44>)
+ 9ce:	1b64      	subs	r4, r4, r5
+ 9d0:	10a4      	asrs	r4, r4, #2
+ 9d2:	42a6      	cmp	r6, r4
+ 9d4:	d105      	bne.n	9e2 <__libc_init_array+0x2e>
+ 9d6:	bd70      	pop	{r4, r5, r6, pc}
+ 9d8:	00b3      	lsls	r3, r6, #2
+ 9da:	58eb      	ldr	r3, [r5, r3]
+ 9dc:	4798      	blx	r3
+ 9de:	3601      	adds	r6, #1
+ 9e0:	e7ee      	b.n	9c0 <__libc_init_array+0xc>
+ 9e2:	00b3      	lsls	r3, r6, #2
+ 9e4:	58eb      	ldr	r3, [r5, r3]
+ 9e6:	4798      	blx	r3
+ 9e8:	3601      	adds	r6, #1
+ 9ea:	e7f2      	b.n	9d2 <__libc_init_array+0x1e>
+ 9ec:	00000a60 	.word	0x00000a60
+ 9f0:	00000a60 	.word	0x00000a60
+ 9f4:	00000a60 	.word	0x00000a60
+ 9f8:	00000a64 	.word	0x00000a64
+ 9fc:	42000800 	.word	0x42000800
+ a00:	42000c00 	.word	0x42000c00
+ a04:	42001000 	.word	0x42001000
+ a08:	42001400 	.word	0x42001400
+ a0c:	42001800 	.word	0x42001800
+ a10:	42001c00 	.word	0x42001c00
+
+00000a14 <RomBOOT_Version>:
+ a14:	312e3276 72614d38 20363120 31323032     v2.18Mar 16 2021
+ a24:	3a393020 343a3930 000d0a32               09:09:42...
+
+00000a30 <uart_if>:
+ a30:	000006a9 000006c1 000002f9 000006e1     ................
+ a40:	00000701 00000881 00000911 00000d0a     ................
+ a50:	0000003e                                >...
+
+00000a54 <_init>:
+ a54:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ a56:	46c0      	nop			; (mov r8, r8)
+ a58:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ a5a:	bc08      	pop	{r3}
+ a5c:	469e      	mov	lr, r3
+ a5e:	4770      	bx	lr
+
+00000a60 <__init_array_start>:
+ a60:	000000dd 	.word	0x000000dd
+
+00000a64 <_fini>:
+ a64:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ a66:	46c0      	nop			; (mov r8, r8)
+ a68:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ a6a:	bc08      	pop	{r3}
+ a6c:	469e      	mov	lr, r3
+ a6e:	4770      	bx	lr
+
+00000a70 <__fini_array_start>:
+ a70:	000000b5 	.word	0x000000b5
